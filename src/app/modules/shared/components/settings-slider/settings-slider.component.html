@@ -1,0 +1,7 @@
+<nz-form-item [formGroup]="formGroup">
+  <nz-form-label nzRequired>{{name}}</nz-form-label>
+  <nz-alert nzType="info" [nzMessage]="notes" [hidden]="!notes" nzShowIcon></nz-alert>
+  <nz-form-control nzHasFeedback nzValidatingTip="Checking..." [nzErrorTip]="nzErrorTip">
+    <nz-slider formControlName="{{id}}" [nzMax]="max" [nzMin]="min"></nz-slider>
+  </nz-form-control>
+</nz-form-item>

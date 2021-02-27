@@ -1,0 +1,33 @@
+<nz-row>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="16" nzXs="24">
+    <nz-skeleton [nzActive]="true" [hidden]="loaded"></nz-skeleton>
+    <form nz-form nzLayout="vertical" [hidden]="!loaded">
+      <nz-tabset>
+        <nz-tab nzTitle="Options">
+          <shared-settings-small-text id="prefix" name="Prefix" [formGroup]="form"></shared-settings-small-text>
+          <shared-settings-select id="language" name="Language" [formGroup]="form"
+                                  [options]="this.languages"></shared-settings-select>
+          <shared-settings-boolean id="keepRoles" name="Keep Roles" [formGroup]="form" [notes]="notes">
+            <ng-template #notes>
+              If enabled, users that rejoin after leaving will get their roles added again.
+            </ng-template>
+          </shared-settings-boolean>
+        </nz-tab>
+      </nz-tabset>
+    </form>
+  </nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+</nz-row>
+<nz-row>
+  <ng-template #unsaved>
+    <nz-space>
+      <nz-space-item>
+        You have unsaved changes
+      </nz-space-item>
+      <nz-space-item>
+        <button nz-button nzSize="small" nzType="primary" (click)="save()">Save Changes</button>
+      </nz-space-item>
+    </nz-space>
+  </ng-template>
+</nz-row>

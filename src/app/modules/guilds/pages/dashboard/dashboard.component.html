@@ -1,0 +1,76 @@
+<nz-list nzGrid>
+  <div nz-row [nzGutter]="16">
+    <div nz-col [nzXXl]="8" [nzXl]="4" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24">
+      <nz-list-item>
+        <nz-card nzTitle="Prefix" [nzActions]="[edit]">
+          <ul>
+            <li>Using: <code>L!</code></li>
+          </ul>
+          <ng-template #edit>
+            <a routerLink="settings/core"><i nz-icon nzType="setting"></i></a>
+          </ng-template>
+        </nz-card>
+      </nz-list-item>
+    </div>
+    <div nz-col [nzXXl]="8" [nzXl]="4" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24">
+      <nz-list-item>
+        <nz-card nzTitle="Ignored Channels" [nzActions]="[edit]">
+          <ul>
+            <li>Enabled: <span class="green">true</span></li>
+            <li>Ignored: 3</li>
+          </ul>
+          <ng-template #edit>
+            <i nz-icon nzType="setting"></i>
+          </ng-template>
+        </nz-card>
+      </nz-list-item>
+    </div>
+    <div nz-col [nzXXl]="8" [nzXl]="4" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24">
+      <nz-list-item>
+        <nz-card nzTitle="Auto Moderation" [nzActions]="[edit]">
+          <ul>
+            <li>Enabled: true</li>
+            <li>Ban Threshold: 3</li>
+          </ul>
+          <ng-template #edit>
+            <i nz-icon nzType="setting"></i>
+          </ng-template>
+        </nz-card>
+      </nz-list-item>
+    </div>
+    <div nz-col [nzXXl]="8" [nzXl]="4" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24">
+      <nz-list-item>
+        <nz-card nzTitle="Music" [nzActions]="[edit]">
+          <ul>
+            <li>Enabled: true</li>
+            <li>Volume: 100%</li>
+            <li>Filters: None</li>
+          </ul>
+          <ng-template #edit>
+            <i nz-icon nzType="setting"></i>
+          </ng-template>
+        </nz-card>
+      </nz-list-item>
+    </div>
+    <div nz-col [nzXXl]="8" [nzXl]="4" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24">
+      <nz-list-item>
+        <nz-card nzTitle="Logging" [nzActions]="[edit]">
+          <ul>
+            <li>Bans: []</li>
+            <li>Kicks: []</li>
+          </ul>
+          <ng-template #edit>
+            <i nz-icon nzType="setting"></i>
+          </ng-template>
+        </nz-card>
+      </nz-list-item>
+    </div>
+    <div nz-col [nzXXl]="8" [nzXl]="4" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24">
+      <nz-list-item>
+        <nz-card nzTitle="Auto Moderation">
+          aaa
+        </nz-card>
+      </nz-list-item>
+    </div>
+  </div>
+</nz-list>
