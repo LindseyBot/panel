@@ -17,6 +17,7 @@ import {NzMessageServiceModule} from 'ng-zorro-antd/message';
 import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzSpaceModule} from 'ng-zorro-antd/space';
 import {NzTabsModule} from 'ng-zorro-antd/tabs';
+import {NzImageModule} from 'ng-zorro-antd/image';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -35,7 +36,8 @@ import {NzTabsModule} from 'ng-zorro-antd/tabs';
     NzMessageServiceModule,
     NzButtonModule,
     NzSpaceModule,
-    NzTabsModule
+    NzTabsModule,
+    NzImageModule
   ]
 })
 export class UsersModule { }
