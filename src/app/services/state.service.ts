@@ -8,14 +8,14 @@ export class StateService {
   public guildId: string = null;
 
   constructor() {
-    if (localStorage.getItem('Guild') !== null) {
-      this.guildId = localStorage.getItem('Guild');
+    if (localStorage.getItem('SelectedServer') !== null) {
+      this.guildId = localStorage.getItem('SelectedServer');
     }
   }
 
   setGuild(id: string) {
     this.guildId = id;
-    localStorage.setItem('Guild', id);
+    localStorage.setItem('SelectedServer', id);
   }
 
 }

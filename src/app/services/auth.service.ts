@@ -65,8 +65,8 @@ export class AuthService {
    */
   logout(): void {
     this.user = null;
-    localStorage.setItem('Discord', null);
-    localStorage.setItem('Token', null);
+    localStorage.setItem('Discord', undefined);
+    localStorage.setItem('Token', undefined);
   }
 
   /**
