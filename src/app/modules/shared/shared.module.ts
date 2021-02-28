@@ -15,15 +15,17 @@ import {NzSkeletonModule} from "ng-zorro-antd/skeleton";
 import {NzSpaceModule} from "ng-zorro-antd/space";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import { SettingsSelectComponent } from './components/settings-select/settings-select.component';
+import { SettingsBigTextComponent } from './components/settings-big-text/settings-big-text.component';
 
 
 @NgModule({
-  declarations: [SettingsSmallTextComponent, SettingsBooleanComponent, SettingsSliderComponent, SettingsSelectComponent],
+  declarations: [SettingsSmallTextComponent, SettingsBooleanComponent, SettingsSliderComponent, SettingsSelectComponent, SettingsBigTextComponent],
   exports: [
     SettingsSmallTextComponent,
     SettingsBooleanComponent,
     SettingsSliderComponent,
     SettingsSelectComponent,
+    SettingsBigTextComponent,
   ],
   imports: [
     CommonModule,

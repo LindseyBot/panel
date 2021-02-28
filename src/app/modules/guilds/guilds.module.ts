@@ -22,10 +22,12 @@ import {NzSpaceModule} from "ng-zorro-antd/space";
 import { SettingsAutomodComponent } from './pages/settings-automod/settings-automod.component';
 import {NzTabsModule} from "ng-zorro-antd/tabs";
 import { TabAntiAdvertisingComponent } from './pages/tab-anti-advertising/tab-anti-advertising.component';
+import { SettingsLoggingComponent } from './pages/settings-logging/settings-logging.component';
+import { TabWelcomeMessageComponent } from './pages/tab-welcome-message/tab-welcome-message.component';
 
 
 @NgModule({
-  declarations: [GuildListComponent, DashboardComponent, SettingsCoreComponent, SettingsAutomodComponent, TabAntiAdvertisingComponent],
+  declarations: [GuildListComponent, DashboardComponent, SettingsCoreComponent, SettingsAutomodComponent, TabAntiAdvertisingComponent, SettingsLoggingComponent, TabWelcomeMessageComponent],
   imports: [
     CommonModule,
     GuildsRoutingModule,

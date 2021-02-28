@@ -1,0 +1,9 @@
+<nz-form-item [formGroup]="formGroup">
+  <nz-form-label nzRequired>{{name}}</nz-form-label>
+  <nz-alert nzType="info" [nzMessage]="notes" [hidden]="!notes" nzShowIcon></nz-alert>
+  <br [hidden]="!notes"/>
+  <nz-form-control nzHasFeedback nzValidatingTip="Checking..." [nzErrorTip]="nzErrorTip">
+    <textarea nz-input [nzAutosize]="{ minRows: 3, maxRows: 8 }" maxlength="2000" formControlName="{{id}}"
+              placeholder="{{placeholder}}"></textarea>
+  </nz-form-control>
+</nz-form-item>
