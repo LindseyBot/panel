@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StateService} from "./services/state.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {AuthService} from "./services/auth.service";
 import {User} from "./modules/auth/entities/user";
 
@@ -14,11 +14,18 @@ export class AppComponent implements OnInit {
   user: User;
   isCollapsed = false;
 
-  constructor(public state: StateService, private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute,
+              private authService: AuthService, public state: StateService) {
   }
 
   ngOnInit(): void {
     this.authService.getUser().subscribe(user => this.user = user);
+    this.router.events.subscribe(event => {
+      if (!(event instanceof NavigationEnd)) {
+        return;
+      }
+      const data = this.activatedRoute.firstChild.snapshot.data;
+    });
   }
 
   isUserRoute(): boolean {
