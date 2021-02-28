@@ -26,8 +26,9 @@ export class Oauth2Component implements OnInit {
       this.token = args['access_token'];
       this.expires = args['expires_in'];
       if (this.token) {
-        this.authService.login(this.token);
-        this.router.navigate(['/guilds']).finally();
+        this.authService.login(this.token).subscribe(() => {
+          this.router.navigate(['/guilds']).finally();
+        });
       }
     });
   }

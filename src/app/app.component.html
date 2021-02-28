@@ -60,7 +60,7 @@
             <h1>Lindsey Dashboard</h1>
           </a>
         </div>
-        <div class="right-header">
+        <div class="right-header" *ngIf="user">
           <nz-space>
             <nz-space-item>
               <nz-button-group>
@@ -81,7 +81,7 @@
             </nz-space-item>
             <nz-space-item>
               <nz-button-group>
-                <button nz-button>Fabricio20#5913</button>
+                <button nz-button>{{user.name}}</button>
                 <button nz-button nz-dropdown [nzDropdownMenu]="userMenu" nzPlacement="bottomRight">
                   <i nz-icon nzType="ellipsis"></i>
                 </button>

@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    location.href = 'https://discord.com/oauth2/authorize?client_id=168156218941112320&redirect_uri=http://localhost:4200/oauth2&response_type=token&scope=identify+guilds';
+    location.href = 'https://discord.com/oauth2/authorize?client_id=168156218941112320&redirect_uri=http://localhost:4200/auth/oauth2&response_type=token&scope=identify+guilds';
   }
 
 }
