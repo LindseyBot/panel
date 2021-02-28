@@ -37,6 +37,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   ];
 
+  badges = [
+      {
+          url: 'https://img.alicdn.com/tfs/TB1g.mWZAL0gK0jSZFtXXXQCXXa-200-200.svg'
+      }, {
+          url: 'https://img.alicdn.com/tfs/TB1Z0PywTtYBeNjy1XdXXXXyVXa-186-200.svg'
+      }
+  ];
+
   constructor(private state: StateService, private formBuilder: FormBuilder, private nzMessage: NzMessageService,
               private formService: FormService) {
     this.form = this.formBuilder.group({
