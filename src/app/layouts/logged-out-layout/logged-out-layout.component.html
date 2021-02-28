@@ -1,0 +1,32 @@
+<nz-layout class="app-layout">
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <div class="navbar-logo">
+          <a routerLink="/">
+            <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+            <h1>Lindsey Dashboard</h1>
+          </a>
+        </div>
+        <div class="right-header">
+          <nz-space>
+            <nz-space-item>
+              <a (click)="toggleTheme()">
+                <i class="theme-switcher" nz-icon nzType="bulb" nzTheme="fill"></i>
+              </a>
+            </nz-space-item>
+            <nz-space-item>
+              <nz-divider nzType="vertical"></nz-divider>
+            </nz-space-item>
+            <nz-space-item>
+              <button nz-button routerLink="/auth/login">Log in</button>
+            </nz-space-item>
+          </nz-space>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

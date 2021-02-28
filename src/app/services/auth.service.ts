@@ -76,7 +76,8 @@ export class AuthService {
     if (this.user) {
       return of(this.user);
     }
-    return this.http.get<User>(environment.API_URL + '/users/@me', {headers: this.getHeaders()});
+    return this.http.get<User>(environment.API_URL + '/users/@me', {headers: this.getHeaders()})
+      .pipe(tap(user => this.user = user));
   }
 
   /**

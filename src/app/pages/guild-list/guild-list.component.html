@@ -2,7 +2,7 @@
   <div nz-row [nzGutter]="16">
     <div nz-col [nzXXl]="8" [nzXl]="4" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24" *ngFor="let guild of guilds">
       <nz-list-item (click)="select(guild.id)">
-        <nz-card nzBorderless nzHoverable>
+        <nz-card nzHoverable>
           <h3><img src="favicon.ico" alt="guild-icon"> {{guild.name}}</h3>
         </nz-card>
       </nz-list-item>

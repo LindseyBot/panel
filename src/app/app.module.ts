@@ -16,12 +16,24 @@ import {NzDropDownModule} from "ng-zorro-antd/dropdown";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzSpaceModule} from "ng-zorro-antd/space";
 import {NzDividerModule} from "ng-zorro-antd/divider";
+import {NavbarLayoutComponent} from './layouts/navbar-layout/navbar-layout.component';
+import {ServerSidebarLayoutComponent} from './layouts/server-sidebar-layout/server-sidebar-layout.component';
+import {LoggedOutLayoutComponent} from './layouts/logged-out-layout/logged-out-layout.component';
+import {GuildListComponent} from './pages/guild-list/guild-list.component';
+import {NzListModule} from "ng-zorro-antd/list";
+import {NzCardModule} from "ng-zorro-antd/card";
+import {NzGridModule} from "ng-zorro-antd/grid";
+import {AppInitializerProvider} from "./app-initializer.service";
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarLayoutComponent,
+    ServerSidebarLayoutComponent,
+    LoggedOutLayoutComponent,
+    GuildListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +47,12 @@ registerLocaleData(en);
     NzDropDownModule,
     NzButtonModule,
     NzSpaceModule,
-    NzDividerModule
+    NzDividerModule,
+    NzListModule,
+    NzCardModule,
+    NzGridModule
   ],
-  providers: [{provide: NZ_I18N, useValue: en_US}],
+  providers: [AppInitializerProvider, {provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {GuildListComponent} from "./pages/guild-list/guild-list.component";
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {LoggedInGuard} from "../../services/guards/logged-in.guard";
 import {SettingsCoreComponent} from "./pages/settings-core/settings-core.component";
@@ -12,8 +11,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: GuildListComponent,
-    canActivate: [LoggedInGuard]
+    redirectTo: 'overview'
   },
   {
     path: 'overview',

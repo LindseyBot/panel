@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Guild} from "../../../../entities/guild";
-import {DiscordService} from "../../../../services/discord.service";
-import {StateService} from "../../../../services/state.service";
+import {Guild} from "../../entities/guild";
+import {DiscordService} from "../../services/discord.service";
+import {StateService} from "../../services/state.service";
 import {Router} from "@angular/router";
 
 @Component({
