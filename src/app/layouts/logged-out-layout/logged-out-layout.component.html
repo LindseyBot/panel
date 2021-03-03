@@ -18,7 +18,27 @@
             <nz-space-item>
               <nz-divider nzType="vertical"></nz-divider>
             </nz-space-item>
-            <nz-space-item>
+            <nz-space-item *ngIf="user">
+              <button nz-button routerLink="/guilds">Control Panel</button>
+            </nz-space-item>
+            <nz-space-item *ngIf="user">
+              <nz-divider nzType="vertical"></nz-divider>
+            </nz-space-item>
+            <nz-space-item *ngIf="user">
+              <nz-button-group>
+                <button nz-button>{{user.name}}</button>
+                <button nz-button nz-dropdown [nzDropdownMenu]="userMenu" nzPlacement="bottomRight">
+                  <i nz-icon nzType="ellipsis"></i>
+                </button>
+              </nz-button-group>
+              <nz-dropdown-menu #userMenu="nzDropdownMenu">
+                <ul nz-menu>
+                  <li nz-menu-item routerLink="/users/settings">Settings</li>
+                  <li nz-menu-item nzDanger routerLink="/auth/logout">Logout</li>
+                </ul>
+              </nz-dropdown-menu>
+            </nz-space-item>
+            <nz-space-item *ngIf="!user">
               <button nz-button routerLink="/auth/login">Log in</button>
             </nz-space-item>
           </nz-space>

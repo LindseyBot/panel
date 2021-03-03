@@ -28,7 +28,6 @@ export class SettingsAutomodComponent implements OnInit, OnDestroy {
               private formService: FormService) {
     this.form = this.formBuilder.group({
       adEnabled: ['', [Validators.required]],
-      adBan: ['', [Validators.required]],
       adStrikes: ['', [Validators.required, Validators.max(10), Validators.min(1)]],
     });
   }

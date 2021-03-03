@@ -1,15 +1,8 @@
 <shared-settings-boolean [formGroup]="form" id="adEnabled" name="Status">
 </shared-settings-boolean>
-<shared-settings-boolean [formGroup]="form" id="adBan" name="Ban"
-                         [notes]="notes">
-  <ng-template #notes>
-    If enabled will ban the offending user after the defined amount of strikes, if disabled a kick will be issued
-    instead.
-  </ng-template>
-</shared-settings-boolean>
 <shared-settings-slider [formGroup]="form" id="adStrikes" name="Strikes"
                         max="10" min="1" [notes]="notes">
   <ng-template #notes>
-    How many strikes before a user is banned or kicked.
+    How many strikes should a user receive for each violation.
   </ng-template>
 </shared-settings-slider>

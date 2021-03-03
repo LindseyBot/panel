@@ -4,12 +4,13 @@ import {ServerSidebarLayoutComponent} from "./layouts/server-sidebar-layout/serv
 import {NavbarLayoutComponent} from "./layouts/navbar-layout/navbar-layout.component";
 import {LoggedInGuard} from "./services/guards/logged-in.guard";
 import {GuildListComponent} from "./pages/guild-list/guild-list.component";
+import {LoggedOutLayoutComponent} from "./layouts/logged-out-layout/logged-out-layout.component";
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'selector'
+    redirectTo: 'site'
   },
   {
     path: 'auth',
@@ -26,6 +27,11 @@ const routes: Routes = [
     component: NavbarLayoutComponent,
     canActivate: [LoggedInGuard],
     loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
+  },
+  {
+    path: 'site',
+    component: LoggedOutLayoutComponent,
+    loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule)
   },
   {
     path: 'selector',

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ThemeService} from "../../services/theme.service";
+import {User} from "../../modules/auth/entities/user";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-logged-out-layout',
@@ -8,10 +10,13 @@ import {ThemeService} from "../../services/theme.service";
 })
 export class LoggedOutLayoutComponent implements OnInit {
 
-  constructor(private themeService: ThemeService) {
+  user: User;
+
+  constructor(private authService: AuthService, private themeService: ThemeService) {
   }
 
   ngOnInit(): void {
+    this.authService.getUser().subscribe(user => this.user = user);
   }
 
   toggleTheme(): void {
