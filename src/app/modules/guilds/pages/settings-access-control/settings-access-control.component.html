@@ -1,0 +1,56 @@
+<nz-row>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="16" nzXs="24">
+    <nz-alert nzType="info" [nzMessage]="info" nzShowIcon>
+      <ng-template #info>
+        <ul class="infomsg">
+          <li>The guild OWNER can always access the control panel.</li>
+          <li>Users with the ADMINISTRATOR permission on Discord can always access as well.</li>
+          <li>Only the guild OWNER can add or remove users.</li>
+        </ul>
+      </ng-template>
+    </nz-alert>
+    <br/>
+    <nz-alert nzType="warning" [nzMessage]="warn" nzShowIcon>
+      <ng-template #warn>
+        These users have full access to the control panel.
+      </ng-template>
+    </nz-alert>
+    <nz-tabset>
+      <nz-tab nzTitle="Panel Access">
+        <button nz-button nzType="primary" (click)="addUser()">
+          <i nz-icon nzType="plus"></i>
+          Authorize User
+        </button>
+        <br/>
+        <br/>
+        <nz-table #basicTable [nzData]="credentials" [nzLoading]="!loaded">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Access Level</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{data.username}}</td>
+            <td>{{data.level}}</td>
+            <td>
+              <span *ngIf="data.user === this.userId">
+                It's you!
+              </span>
+              <span *ngIf="data.user !== this.userId">
+                <button nz-button nzType="danger" (click)="delete(data.id)">
+                  <i nz-icon nzType="close"></i>
+                </button>
+              </span>
+            </td>
+          </tr>
+          </tbody>
+        </nz-table>
+      </nz-tab>
+    </nz-tabset>
+  </nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+</nz-row>

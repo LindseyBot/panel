@@ -49,7 +49,7 @@ export class SettingsCoreComponent implements OnInit, OnDestroy {
         this.changesDetected = true;
         this.unsavedMsgRef = this.nzMessage.warning(this.unsavedRef, {nzDuration: 0});
       }
-    })
+    });
   }
 
   ngOnDestroy(): void {

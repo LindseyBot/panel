@@ -6,6 +6,7 @@ import {SettingsCoreComponent} from "./pages/settings-core/settings-core.compone
 import {GuildSelectedGuard} from "../../services/guards/guild-selected.guard";
 import {SettingsAutomodComponent} from "./pages/settings-automod/settings-automod.component";
 import {SettingsLoggingComponent} from "./pages/settings-logging/settings-logging.component";
+import {SettingsAccessControlComponent} from "./pages/settings-access-control/settings-access-control.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
   {
     path: 'overview',
     component: DashboardComponent,
+    canActivate: [LoggedInGuard, GuildSelectedGuard]
+  },
+  {
+    path: 'settings/access',
+    component: SettingsAccessControlComponent,
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {

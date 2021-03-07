@@ -1,0 +1,12 @@
+<div>
+  Paste a reference ticket below, to get one:
+  <ul>
+    <li>Open discord</li>
+    <li>Use the <code>L!reference @user</code> command, specifying the desired user.</li>
+    <li>Paste the token below and press Ok!</li>
+  </ul>
+  <input nz-input placeholder="...." [(ngModel)]="token"/>
+</div>
+<div *nzModalFooter>
+  <button nz-button nzType="primary" (click)="onSubmit()">Ok</button>
+</div>

@@ -23,10 +23,16 @@ import {NzTabsModule} from "ng-zorro-antd/tabs";
 import {TabAntiAdvertisingComponent} from './pages/tab-anti-advertising/tab-anti-advertising.component';
 import {SettingsLoggingComponent} from './pages/settings-logging/settings-logging.component';
 import {TabWelcomeMessageComponent} from './pages/tab-welcome-message/tab-welcome-message.component';
+import {SettingsAccessControlComponent} from './pages/settings-access-control/settings-access-control.component';
+import {NzTableModule} from "ng-zorro-antd/table";
+import {NzDividerModule} from "ng-zorro-antd/divider";
+import {NzAlertModule} from "ng-zorro-antd/alert";
+import {NzModalModule} from "ng-zorro-antd/modal";
+import {NzNotificationModule} from "ng-zorro-antd/notification";
 
 
 @NgModule({
-  declarations: [DashboardComponent, SettingsCoreComponent, SettingsAutomodComponent, TabAntiAdvertisingComponent, SettingsLoggingComponent, TabWelcomeMessageComponent],
+  declarations: [DashboardComponent, SettingsCoreComponent, SettingsAutomodComponent, TabAntiAdvertisingComponent, SettingsLoggingComponent, TabWelcomeMessageComponent, SettingsAccessControlComponent],
   imports: [
     CommonModule,
     GuildsRoutingModule,
@@ -44,7 +50,12 @@ import {TabWelcomeMessageComponent} from './pages/tab-welcome-message/tab-welcom
     NzMessageServiceModule,
     NzButtonModule,
     NzSpaceModule,
-    NzTabsModule
+    NzTabsModule,
+    NzTableModule,
+    NzDividerModule,
+    NzAlertModule,
+    NzModalModule,
+    NzNotificationModule
   ]
 })
 export class GuildsModule {

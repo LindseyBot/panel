@@ -5,7 +5,7 @@ import {NzGridModule} from "ng-zorro-antd/grid";
 import {NzFormModule} from "ng-zorro-antd/form";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzSelectModule} from "ng-zorro-antd/select";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SettingsBooleanComponent} from './components/settings-boolean/settings-boolean.component';
 import {NzSwitchModule} from "ng-zorro-antd/switch";
 import {SettingsSliderComponent} from './components/settings-slider/settings-slider.component';
@@ -14,12 +14,15 @@ import {NzAlertModule} from "ng-zorro-antd/alert";
 import {NzSkeletonModule} from "ng-zorro-antd/skeleton";
 import {NzSpaceModule} from "ng-zorro-antd/space";
 import {NzButtonModule} from "ng-zorro-antd/button";
-import { SettingsSelectComponent } from './components/settings-select/settings-select.component';
-import { SettingsBigTextComponent } from './components/settings-big-text/settings-big-text.component';
+import {SettingsSelectComponent} from './components/settings-select/settings-select.component';
+import {SettingsBigTextComponent} from './components/settings-big-text/settings-big-text.component';
+import {ModalUserReferenceComponent} from './components/modal-user-reference/modal-user-reference.component';
+import {NzModalModule} from "ng-zorro-antd/modal";
+import {NzDividerModule} from "ng-zorro-antd/divider";
 
 
 @NgModule({
-  declarations: [SettingsSmallTextComponent, SettingsBooleanComponent, SettingsSliderComponent, SettingsSelectComponent, SettingsBigTextComponent],
+  declarations: [SettingsSmallTextComponent, SettingsBooleanComponent, SettingsSliderComponent, SettingsSelectComponent, SettingsBigTextComponent, ModalUserReferenceComponent],
   exports: [
     SettingsSmallTextComponent,
     SettingsBooleanComponent,
@@ -39,7 +42,10 @@ import { SettingsBigTextComponent } from './components/settings-big-text/setting
     ReactiveFormsModule,
     NzSkeletonModule,
     NzSpaceModule,
-    NzButtonModule
+    NzButtonModule,
+    FormsModule,
+    NzModalModule,
+    NzDividerModule
   ]
 })
 export class SharedModule {
