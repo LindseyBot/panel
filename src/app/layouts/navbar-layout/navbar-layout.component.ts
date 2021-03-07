@@ -10,6 +10,7 @@ import {ThemeService} from "../../services/theme.service";
 })
 export class NavbarLayoutComponent implements OnInit {
 
+  isCollapsed = false;
   user: User;
 
   constructor(private authService: AuthService, private themeService: ThemeService) {

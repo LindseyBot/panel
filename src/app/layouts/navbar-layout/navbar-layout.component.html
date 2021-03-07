@@ -1,13 +1,20 @@
 <nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a routerLink="/">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>Lindsey Dashboard</h1>
+      </a>
+    </div>
+  </nz-sider>
   <nz-layout>
-    <nz-header>
+    <nz-header style="position: fixed">
       <div class="app-header">
-        <div class="navbar-logo">
-          <a routerLink="/">
-            <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-            <h1>Lindsey Dashboard</h1>
-          </a>
-        </div>
         <div class="right-header" *ngIf="user">
           <nz-space>
             <nz-space-item>
