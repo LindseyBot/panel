@@ -76,3 +76,13 @@ nz-header {
 nz-content {
   margin: 24px;
 }
+
+.guild-logo-minimized {
+  padding-left: 21px;
+}
+
+.guild-logo {
+  padding: 0;
+  margin: 0;
+  width: 38px;
+}

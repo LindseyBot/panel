@@ -12,30 +12,30 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'overview'
+    redirectTo: '/selector'
   },
   {
-    path: 'overview',
+    path: ':guild/overview',
     component: DashboardComponent,
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
-    path: 'settings/access',
+    path: ':guild/access',
     component: SettingsAccessControlComponent,
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
-    path: 'settings/core',
+    path: ':guild/settings/core',
     component: SettingsCoreComponent,
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
-    path: 'settings/automod',
+    path: ':guild/settings/automod',
     component: SettingsAutomodComponent,
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
-    path: 'settings/log',
+    path: ':guild/settings/log',
     component: SettingsLoggingComponent,
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   }

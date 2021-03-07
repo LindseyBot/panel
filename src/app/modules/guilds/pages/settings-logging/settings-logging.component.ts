@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NzMessageRef, NzMessageService} from "ng-zorro-antd/message";
-import {StateService} from "../../../../services/state.service";
 import {FormService} from "../../../../services/form.service";
 
 @Component({
@@ -19,7 +18,7 @@ export class SettingsLoggingComponent implements OnInit, OnDestroy {
   unsavedRef: TemplateRef<any>;
   unsavedMsgRef: NzMessageRef;
 
-  constructor(private state: StateService, private formBuilder: FormBuilder, private nzMessage: NzMessageService, private formService: FormService) {
+  constructor(private formBuilder: FormBuilder, private nzMessage: NzMessageService, private formService: FormService) {
     this.form = this.formBuilder.group({
       welcomeEnabled: ['', [Validators.required]],
       welcomeDM: ['', [Validators.required]],

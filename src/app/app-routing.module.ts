@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: 'guilds',
+    path: 'panel',
     component: ServerSidebarLayoutComponent,
     canActivate: [LoggedInGuard],
     loadChildren: () => import('./modules/guilds/guilds.module').then(m => m.GuildsModule)

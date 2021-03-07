@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Guild} from "../../entities/guild";
 import {DiscordService} from "../../services/discord.service";
-import {StateService} from "../../services/state.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,7 +12,7 @@ export class GuildListComponent implements OnInit {
 
   guilds: Guild[] = [];
 
-  constructor(private discord: DiscordService, private state: StateService, private router: Router) {
+  constructor(private discord: DiscordService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -21,8 +20,7 @@ export class GuildListComponent implements OnInit {
   }
 
   select(id: string) {
-    this.state.setGuild(id);
-    this.router.navigate(['guilds', 'overview']);
+    this.router.navigate(['panel', id, 'overview']);
   }
 
 }

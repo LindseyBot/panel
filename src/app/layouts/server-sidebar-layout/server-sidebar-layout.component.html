@@ -12,38 +12,43 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Servers" nzIcon="appstore" [hidden]="this.state.guildId">
-        <ul>
-          <li nz-menu-item nzMatchRouterExact>
-            <a routerLink="/guilds/">Server List</a>
-          </li>
-        </ul>
+      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" [ngClass]="{'guild-logo-minimized': isCollapsed}"
+          [nzTooltipTitle]="isCollapsed ? guild.name : ''">
+        <i nz-icon>
+          <img src="{{guild.iconUrl}}" class="guild-logo" alt="guild logo">
+        </i>
+        <span>
+          {{guild.name}}
+        </span>
       </li>
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard" [hidden]="!this.state.guildId">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/guilds/overview">Overview</a>
-          </li>
-          <li nz-submenu nzOpen nzTitle="Settings">
-            <ul>
-              <li nz-menu-item nzMatchRouter>
-                <a routerLink="/guilds/settings/access">Control Panel Access</a>
-              </li>
-              <li nz-menu-item nzMatchRouter>
-                <a routerLink="/guilds/settings/core">Basic Settings</a>
-              </li>
-              <li nz-menu-item nzMatchRouter>
-                <a routerLink="/guilds/settings/automod">AutoMod</a>
-              </li>
-              <li nz-menu-item nzMatchRouter>
-                <a routerLink="/guilds/settings/music">Music</a>
-              </li>
-              <li nz-menu-item nzMatchRouter>
-                <a routerLink="/guilds/settings/log">Logging</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+      <nz-divider nzType="horizontal" style="margin-top: 0"></nz-divider>
+      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
+          [nzTooltipTitle]="isCollapsed ? 'Dashboard' : ''">
+        <i nz-icon nzType="dashboard"></i>
+        <span>
+          <a routerLink="{{this.guildId}}/overview">Dashboard</a>
+        </span>
+      </li>
+      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
+          [nzTooltipTitle]="isCollapsed ? 'Panel Access' : ''">
+        <i nz-icon nzType="lock"></i>
+        <span>
+          <a routerLink="{{this.guildId}}/access">Panel Access</a>
+        </span>
+      </li>
+      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
+          [nzTooltipTitle]="isCollapsed ? 'Settings' : ''">
+        <i nz-icon nzType="control"></i>
+        <span>
+          <a routerLink="{{this.guildId}}/settings/core">Settings</a>
+        </span>
+      </li>
+      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
+          [nzTooltipTitle]="isCollapsed ? 'Logs' : ''">
+        <i nz-icon nzType="book"></i>
+        <span>
+          <a routerLink="{{this.guildId}}/logs">Logs</a>
+        </span>
       </li>
     </ul>
   </nz-sider>
@@ -66,7 +71,7 @@
             <nz-space-item>
               <nz-divider nzType="vertical"></nz-divider>
             </nz-space-item>
-            <nz-space-item>
+            <nz-space-item [hidden]="isCollapsed">
               <nz-button-group>
                 <button nz-button disabled>Imperio Fabricio20</button>
                 <button nz-button nz-dropdown [nzDropdownMenu]="guildSelector" nzPlacement="bottomRight">
@@ -80,7 +85,7 @@
                 </ul>
               </nz-dropdown-menu>
             </nz-space-item>
-            <nz-space-item>
+            <nz-space-item [hidden]="isCollapsed">
               <nz-divider nzType="vertical"></nz-divider>
             </nz-space-item>
             <nz-space-item>

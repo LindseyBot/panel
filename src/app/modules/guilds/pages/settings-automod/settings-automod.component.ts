@@ -1,10 +1,12 @@
 import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ServerProfile} from "../../../../entities/server-profile";
-import {StateService} from "../../../../services/state.service";
 import {GuildSettingsService} from "../../../../services/guild-settings.service";
 import {NzMessageRef, NzMessageService} from "ng-zorro-antd/message";
 import {FormService} from "../../../../services/form.service";
+import {ActivatedRoute} from "@angular/router";
+import {DiscordService} from "../../../../services/discord.service";
+import {Guild} from "../../../../entities/guild";
 
 @Component({
   selector: 'settings-automod',
@@ -17,15 +19,17 @@ export class SettingsAutomodComponent implements OnInit, OnDestroy {
   changesDetected: boolean = false;
   loaded: boolean = false;
 
+  guild: Guild;
+
   @ViewChild('unsaved')
   unsavedRef: TemplateRef<any>;
   unsavedMsgRef: NzMessageRef;
 
   profile: ServerProfile;
 
-  constructor(private state: StateService, private formBuilder: FormBuilder,
-              private guildSettings: GuildSettingsService, private nzMessage: NzMessageService,
-              private formService: FormService) {
+  constructor(private route: ActivatedRoute, private discord: DiscordService,
+              private formBuilder: FormBuilder, private guildSettings: GuildSettingsService,
+              private nzMessage: NzMessageService, private formService: FormService) {
     this.form = this.formBuilder.group({
       adEnabled: ['', [Validators.required]],
       adStrikes: ['', [Validators.required, Validators.max(10), Validators.min(1)]],
@@ -33,7 +37,8 @@ export class SettingsAutomodComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.guildSettings.getProfile(this.state.guildId).subscribe((profile) => {
+    this.discord.getGuild(this.route.snapshot.paramMap.get('guild')).subscribe(guild => this.guild = guild);
+    this.guildSettings.getProfile(this.guild.id).subscribe((profile) => {
       this.profile = profile;
       this.loaded = true;
     });

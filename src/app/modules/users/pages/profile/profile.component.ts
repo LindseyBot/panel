@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {StateService} from '../../../../services/state.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NzMessageRef, NzMessageService} from 'ng-zorro-antd/message';
 import {FormService} from '../../../../services/form.service';
@@ -38,15 +37,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ];
 
   badges = [
-      {
-          url: 'https://img.alicdn.com/tfs/TB1g.mWZAL0gK0jSZFtXXXQCXXa-200-200.svg'
-      }, {
-          url: 'https://img.alicdn.com/tfs/TB1Z0PywTtYBeNjy1XdXXXXyVXa-186-200.svg'
-      }
+    {
+      url: 'https://img.alicdn.com/tfs/TB1g.mWZAL0gK0jSZFtXXXQCXXa-200-200.svg'
+    }, {
+      url: 'https://img.alicdn.com/tfs/TB1Z0PywTtYBeNjy1XdXXXXyVXa-186-200.svg'
+    }
   ];
 
-  constructor(private state: StateService, private formBuilder: FormBuilder, private nzMessage: NzMessageService,
-              private formService: FormService) {
+  constructor(private formBuilder: FormBuilder, private nzMessage: NzMessageService, private formService: FormService) {
     this.form = this.formBuilder.group({
       language: ['', [Validators.required]],
       country: ['', [Validators.required]]
@@ -59,23 +57,23 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.form.patchValue({country: 'USA'});
 
     this.form.valueChanges.subscribe(() => {
-        if (!this.changesDetected) {
-            this.changesDetected = true;
-            this.unsavedMsgRef = this.nzMessage.warning(this.unsavedRef, {nzDuration: 0});
-        }
+      if (!this.changesDetected) {
+        this.changesDetected = true;
+        this.unsavedMsgRef = this.nzMessage.warning(this.unsavedRef, {nzDuration: 0});
+      }
     });
   }
 
   ngOnDestroy(): void {
-      if (this.changesDetected) {
-          this.nzMessage.remove(this.unsavedMsgRef.messageId);
-      }
+    if (this.changesDetected) {
+      this.nzMessage.remove(this.unsavedMsgRef.messageId);
+    }
   }
 
   save(): void {
-      const valid = this.formService.check(this.form);
-      if (!valid) {
-          return;
-      }
+    const valid = this.formService.check(this.form);
+    if (!valid) {
+      return;
+    }
   }
 }

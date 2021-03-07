@@ -1,9 +1,11 @@
 import {Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {StateService} from "../../../../services/state.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NzMessageRef, NzMessageService} from "ng-zorro-antd/message";
 import {FormService} from "../../../../services/form.service";
 import {NzSelectOptionInterface} from "ng-zorro-antd/select";
+import {ActivatedRoute} from "@angular/router";
+import {Guild} from "../../../../entities/guild";
+import {DiscordService} from "../../../../services/discord.service";
 
 @Component({
   selector: 'settings-core',
@@ -15,6 +17,8 @@ export class SettingsCoreComponent implements OnInit, OnDestroy {
   form: FormGroup;
   changesDetected: boolean = false;
   loaded: boolean = false;
+
+  guild: Guild;
 
   @ViewChild('unsaved')
   unsavedRef: TemplateRef<any>;
@@ -29,7 +33,9 @@ export class SettingsCoreComponent implements OnInit, OnDestroy {
     }
   ];
 
-  constructor(private state: StateService, private formBuilder: FormBuilder, private nzMessage: NzMessageService, private formService: FormService) {
+  constructor(private route: ActivatedRoute, private discord: DiscordService,
+              private formBuilder: FormBuilder, private nzMessage: NzMessageService,
+              private formService: FormService) {
     this.form = this.formBuilder.group({
       prefix: ['', [Validators.required]],
       language: ['', [Validators.required]],
@@ -39,6 +45,7 @@ export class SettingsCoreComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loaded = true;
+    this.discord.getGuild(this.route.snapshot.paramMap.get('guild')).subscribe(guild => this.guild = guild);
     this.form.patchValue({'prefix': 'L!'});
     this.form.patchValue({'language': 'en_US'});
     this.form.patchValue({'keepRoles': 'false'});

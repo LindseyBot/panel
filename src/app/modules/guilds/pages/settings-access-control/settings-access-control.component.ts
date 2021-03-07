@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {StateService} from "../../../../services/state.service";
 import {AccessControlService} from "../../services/access-control.service";
 import {AccessCredentials} from "../../../../entities/access-credentials";
 import {AuthService} from "../../../../services/auth.service";
 import {ModalService} from "../../../../services/modal.service";
 import {NzNotificationService} from "ng-zorro-antd/notification";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-settings-access-control',
@@ -14,23 +14,25 @@ import {NzNotificationService} from "ng-zorro-antd/notification";
 export class SettingsAccessControlComponent implements OnInit {
 
   loaded: boolean = false;
+  guildId: string;
 
   credentials: AccessCredentials[];
   userId: string;
 
-  constructor(private state: StateService, private service: AccessControlService,
+  constructor(private route: ActivatedRoute, private service: AccessControlService,
               private authService: AuthService, private modal: ModalService,
               private nzNotifications: NzNotificationService) {
   }
 
   ngOnInit(): void {
+    this.guildId = this.route.snapshot.paramMap.get('guild');
     this.authService.getUser().subscribe(user => this.userId = user.id);
     this.load();
   }
 
   load(): void {
     this.loaded = false;
-    this.service.getAccess(this.state.guildId).subscribe((credentials) => {
+    this.service.getAccess(this.guildId).subscribe((credentials) => {
       this.loaded = true;
       this.credentials = credentials;
     });
@@ -41,7 +43,7 @@ export class SettingsAccessControlComponent implements OnInit {
       if (!res) {
         return;
       }
-      this.service.create(this.state.guildId, res).subscribe((_) => {
+      this.service.create(this.guildId, res).subscribe((_) => {
         this.nzNotifications.success('SUCCESS', _.username + ' added successfully', {
           nzDuration: 5000
         });
@@ -56,7 +58,7 @@ export class SettingsAccessControlComponent implements OnInit {
 
   delete(id: string): void {
     this.loaded = false;
-    this.service.delete(this.state.guildId, id).subscribe((_) => {
+    this.service.delete(this.guildId, id).subscribe((_) => {
       this.nzNotifications.success('SUCCESS', 'User removed successfully', {
         nzDuration: 5000
       });

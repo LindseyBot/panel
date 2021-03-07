@@ -1,23 +1,28 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {StateService} from "../state.service";
+import {DiscordService} from "../discord.service";
+import {Observable, of} from "rxjs";
+import {catchError, map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GuildSelectedGuard implements CanActivate {
 
-  constructor(private state: StateService, private router: Router) {
+  constructor(private discord: DiscordService, private router: Router) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    let canAccess = this.state.guildId !== null && this.state.guildId !== undefined;
-    if (canAccess) {
-      return true;
-    } else {
-      this.router.navigate(['guilds']);
-      return false;
-    }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    const id = route.paramMap.get('guild');
+    return this.discord.getGuild(id).pipe(
+      map(guild => {
+        return !!guild;
+      }), catchError(() => {
+        alert('Failed to load page, please try again');
+        this.router.navigate(['selector']);
+        return of(false);
+      })
+    );
   }
 
 }

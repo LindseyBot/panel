@@ -10,6 +10,7 @@ import {AuthService} from "../../services/auth.service";
 })
 export class LoggedOutLayoutComponent implements OnInit {
 
+  isCollapsed = false;
   user: User;
 
   constructor(private authService: AuthService, private themeService: ThemeService) {

@@ -29,19 +29,19 @@
           <tr>
             <th>Name</th>
             <th>Access Level</th>
-            <th>Action</th>
+            <th nzAlign="center">Action</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let data of basicTable.data">
             <td>{{data.username}}</td>
             <td>{{data.level}}</td>
-            <td>
+            <td nzAlign="center">
               <span *ngIf="data.user === this.userId">
                 It's you!
               </span>
               <span *ngIf="data.user !== this.userId">
-                <button nz-button nzType="danger" (click)="delete(data.id)">
+                <button nz-button nzDanger (click)="delete(data.id)">
                   <i nz-icon nzType="close"></i>
                 </button>
               </span>
