@@ -26,6 +26,8 @@ import {NzGridModule} from "ng-zorro-antd/grid";
 import {AppInitializerProvider} from "./app-initializer.service";
 import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzToolTipModule} from "ng-zorro-antd/tooltip";
+import {NzTableModule} from "ng-zorro-antd/table";
+import {NzAlertModule} from "ng-zorro-antd/alert";
 
 registerLocaleData(en);
 
@@ -54,7 +56,9 @@ registerLocaleData(en);
     NzCardModule,
     NzGridModule,
     NzModalModule,
-    NzToolTipModule
+    NzToolTipModule,
+    NzTableModule,
+    NzAlertModule
   ],
   providers: [AppInitializerProvider, {provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent]

@@ -16,29 +16,13 @@ export class DiscordService {
   constructor(private http: HttpClient, private authService: AuthService) {
   }
 
-  getGuilds(): any {
-    return [
-      {
-        'id': '213044545825406976',
-        'name': 'aaaaa'
-      },
-      {
-        'id': '2222222222222222',
-        'name': 'bbbbb'
-      },
-      {
-        'id': '3333333333333333',
-        'name': 'ccccc'
-      },
-      {
-        'id': '4444444444444444',
-        'name': 'ddddd'
-      },
-      {
-        'id': '5555555555555555',
-        'name': 'eeeee'
-      }
-    ];
+  getGuilds(): Observable<Guild[]> {
+    return this.http.get<Guild[]>(environment.API_URL + '/guilds', {headers: this.authService.getHeaders()})
+      .pipe(tap((guilds) => {
+        for (let guild of guilds) {
+          this.cache.set(guild.id, guild);
+        }
+      }));
   }
 
   getGuild(guildId: string): Observable<Guild> {

@@ -1,11 +1,35 @@
-<nz-list nzGrid>
-  <div nz-row [nzGutter]="16">
-    <div nz-col [nzXXl]="8" [nzXl]="4" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24" *ngFor="let guild of guilds">
-      <nz-list-item (click)="select(guild.id)">
-        <nz-card nzHoverable>
-          <h3><img src="favicon.ico" alt="guild-icon"> {{guild.name}}</h3>
-        </nz-card>
-      </nz-list-item>
-    </div>
-  </div>
-</nz-list>
+<nz-row>
+  <nz-col nzMd="6" nzSm="0"></nz-col>
+  <nz-col nzMd="12" nzXs="24">
+    <nz-alert [nzMessage]="msg" nzType="info" nzShowIcon>
+      <ng-template #msg>
+        Not seeing your server below? <a routerLink="/invite">Add Lindsey here first</a> then try <a routerLink="/auth/logout">logging out</a> and back in again.
+      </ng-template>
+    </nz-alert>
+    <br/>
+    <br/>
+    <nz-table #table [nzData]="guilds" [nzLoading]="loading">
+      <thead>
+      <tr>
+        <th nzWidth="64px">Icon</th>
+        <th>Name</th>
+        <th nzAlign="right"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of table.data" class="clickable" (click)="select(data.id)">
+        <td>
+          <img class="guild-icon" [src]="data.iconUrl" alt="guild-icon">
+        </td>
+        <td>
+          {{data.name}}
+        </td>
+        <td nzAlign="right">
+          <button nz-button nzType="primary" routerLink="/panel/{{data.id}}/overview">Manage</button>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </nz-col>
+  <nz-col nzMd="6" nzSm="0"></nz-col>
+</nz-row>

@@ -10,13 +10,17 @@ import {Router} from "@angular/router";
 })
 export class GuildListComponent implements OnInit {
 
+  loading = true;
   guilds: Guild[] = [];
 
   constructor(private discord: DiscordService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.guilds = this.discord.getGuilds();
+    this.discord.getGuilds().subscribe(guilds => {
+      this.guilds = guilds;
+      this.loading = false;
+    });
   }
 
   select(id: string) {
