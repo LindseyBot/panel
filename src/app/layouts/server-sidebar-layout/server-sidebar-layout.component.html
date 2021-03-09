@@ -36,12 +36,23 @@
           <a routerLink="{{this.guildId}}/access">Panel Access</a>
         </span>
       </li>
-      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
-          [nzTooltipTitle]="isCollapsed ? 'Settings' : ''">
-        <i nz-icon nzType="control"></i>
-        <span>
-          <a routerLink="{{this.guildId}}/settings">Settings</a>
-        </span>
+      <li nz-submenu nzOpen nzTitle="Settings" nzIcon="control">
+        <ul>
+          <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
+              [nzTooltipTitle]="isCollapsed ? 'Settings' : ''">
+            <i nz-icon nzType="control"></i>
+            <span>
+              <a routerLink="{{this.guildId}}/settings">Settings</a>
+            </span>
+          </li>
+          <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
+              [nzTooltipTitle]="isCollapsed ? 'Starboard' : ''">
+            <i nz-icon nzType="star"></i>
+            <span>
+              <a routerLink="{{this.guildId}}/starboard">Starboard</a>
+            </span>
+          </li>
+        </ul>
       </li>
       <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
           [nzTooltipTitle]="isCollapsed ? 'AutoMod' : ''">

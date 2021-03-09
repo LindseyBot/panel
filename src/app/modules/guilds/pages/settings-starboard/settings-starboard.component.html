@@ -1,0 +1,42 @@
+<nz-row>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="16" nzXs="24">
+    <nz-tabset>
+      <nz-tab nzTitle="Starboard">
+        <nz-spin [nzSpinning]="loading">
+          <form nz-form nzLayout="vertical">
+            <shared-settings-boolean id="enabled" name="Status" [formGroup]="form"
+                                     [disabled]="loading" [loading]="loading"></shared-settings-boolean>
+            <shared-settings-slider id="minStars" name="Minimum Stars" min="1" max="10" [formGroup]="form"
+                                    [required]="isEnabled"
+                                    [disabled]="loading || !this.form.get('enabled').value"
+                                    [loading]="loading" [notes]="starsNotes">
+              <ng-template #starsNotes>
+                The minimum amount of stars required on a message for it to be posted on the starboard.
+              </ng-template>
+            </shared-settings-slider>
+            <shared-settings-channel id="channel" name="Starboard Channel" [formGroup]="form" [guild]="guild"
+                                     [required]="isEnabled"
+                                     [disabled]="loading || !this.form.get('enabled').value"
+                                     [loading]="loading" [notes]="channelNotes" [nzErrorTip]="channelErrors">
+              <ng-template #channelNotes>
+                The (text) channel where messages who have the minimum amount of stars are reposted to.
+              </ng-template>
+              <ng-template #channelErrors let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  A channel is required when this feature is enabled.
+                </ng-container>
+              </ng-template>
+            </shared-settings-channel>
+          </form>
+          <div style="float:right">
+            <button nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary" (click)="save()">
+              Save Changes
+            </button>
+          </div>
+        </nz-spin>
+      </nz-tab>
+    </nz-tabset>
+  </nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+</nz-row>
