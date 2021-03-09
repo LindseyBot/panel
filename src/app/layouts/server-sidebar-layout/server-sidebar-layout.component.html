@@ -40,7 +40,22 @@
           [nzTooltipTitle]="isCollapsed ? 'Settings' : ''">
         <i nz-icon nzType="control"></i>
         <span>
-          <a routerLink="{{this.guildId}}/settings/core">Settings</a>
+          <a routerLink="{{this.guildId}}/settings">Settings</a>
+        </span>
+      </li>
+      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
+          [nzTooltipTitle]="isCollapsed ? 'AutoMod' : ''">
+        <i nz-icon nzType="security-scan"></i>
+        <span>
+          <a routerLink="{{this.guildId}}/automod">AutoMod</a>
+        </span>
+      </li>
+      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
+          [nzTooltipTitle]="isCollapsed ? 'Music' : ''"><span>
+        <i nz-icon>
+          <object type="image/svg+xml" class="fas" data="assets/music-solid.svg"></object>
+        </i>
+          <a routerLink="{{this.guildId}}/music">Music</a>
         </span>
       </li>
       <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter

@@ -21,6 +21,15 @@ export class SettingsSmallTextComponent implements OnInit {
   placeholder: string;
 
   @Input()
+  required: boolean = true;
+
+  @Input()
+  disabled: boolean = false;
+
+  @Input()
+  loading: boolean = false;
+
+  @Input()
   nzErrorTip?: string | TemplateRef<{
     $implicit: AbstractControl | NgModel;
   }>;

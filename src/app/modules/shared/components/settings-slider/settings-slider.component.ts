@@ -33,6 +33,15 @@ export class SettingsSliderComponent implements OnInit {
     $implicit: AbstractControl | NgModel;
   }>;
 
+  @Input()
+  loading: boolean = false;
+
+  @Input()
+  required: boolean = true;
+
+  @Input()
+  disabled: boolean = false;
+
   constructor() {
   }
 

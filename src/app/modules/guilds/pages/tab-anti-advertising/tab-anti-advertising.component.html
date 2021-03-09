@@ -1,8 +1,27 @@
-<shared-settings-boolean [formGroup]="form" id="adEnabled" name="Status">
-</shared-settings-boolean>
-<shared-settings-slider [formGroup]="form" id="adStrikes" name="Strikes"
-                        max="10" min="1" [notes]="notes">
-  <ng-template #notes>
-    How many strikes should a user receive for each violation.
-  </ng-template>
-</shared-settings-slider>
+<nz-spin [nzSpinning]="loading">
+  <form nz-form nzLayout="vertical">
+    <shared-settings-boolean [formGroup]="form" id="enabled" name="Status"
+                             [disabled]="loading" [loading]="loading">
+    </shared-settings-boolean>
+    <shared-settings-slider [formGroup]="form" id="strikes" name="Strikes" nzErrorTip="#strikesError"
+                            [disabled]="loading" [loading]="loading"
+                            max="10" min="1" [notes]="notes">
+      <ng-template #notes>
+        How many strikes should a user receive for each violation.
+      </ng-template>
+      <ng-template #strikesError let-control>
+        <ng-container *ngIf="control.hasError('max')">
+          Strikes exceeds limit (10).
+        </ng-container>
+        <ng-container *ngIf="control.hasError('min')">
+          Strikes too low (minimum 1).
+        </ng-container>
+      </ng-template>
+    </shared-settings-slider>
+  </form>
+  <div style="float:right">
+    <button nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary" (click)="save()">
+      Save Changes
+    </button>
+  </div>
+</nz-spin>

@@ -1,9 +1,10 @@
 <nz-form-item [formGroup]="formGroup">
-  <nz-form-label nzRequired>{{name}}</nz-form-label>
+  <nz-form-label [nzRequired]="required">{{name}}</nz-form-label>
   <nz-alert nzType="info" [nzMessage]="notes" [hidden]="!notes" nzShowIcon></nz-alert>
   <br [hidden]="!notes"/>
   <nz-form-control nzHasFeedback nzValidatingTip="Checking..." [nzErrorTip]="nzErrorTip">
-    <nz-select formControlName="{{id}}" [nzOptions]="options">
+    <nz-select formControlName="{{id}}" [nzOptions]="options"
+               [nzDisabled]="disabled" [required]="required" [nzLoading]="loading">
     </nz-select>
   </nz-form-control>
 </nz-form-item>

@@ -25,12 +25,12 @@ const routes: Routes = [
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
-    path: ':guild/settings/core',
+    path: ':guild/settings',
     component: SettingsCoreComponent,
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
-    path: ':guild/settings/automod',
+    path: ':guild/automod',
     component: SettingsAutomodComponent,
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },

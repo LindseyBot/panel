@@ -18,6 +18,15 @@ export class SettingsBooleanComponent implements OnInit {
   name: string;
 
   @Input()
+  required: boolean = true;
+
+  @Input()
+  loading: boolean = false;
+
+  @Input()
+  disabled: boolean = false;
+
+  @Input()
   nzErrorTip?: string | TemplateRef<{
     $implicit: AbstractControl | NgModel;
   }>;

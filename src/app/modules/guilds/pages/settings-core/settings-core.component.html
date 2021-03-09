@@ -1,33 +1,41 @@
 <nz-row>
   <nz-col nzMd="4" nzSm="0"></nz-col>
   <nz-col nzMd="16" nzXs="24">
-    <nz-skeleton [nzActive]="true" [hidden]="loaded"></nz-skeleton>
-    <form nz-form nzLayout="vertical" [hidden]="!loaded">
-      <nz-tabset>
-        <nz-tab nzTitle="Options">
-          <shared-settings-small-text id="prefix" name="Prefix" [formGroup]="form"></shared-settings-small-text>
-          <shared-settings-select id="language" name="Language" [formGroup]="form"
-                                  [options]="this.languages"></shared-settings-select>
-          <shared-settings-boolean id="keepRoles" name="Keep Roles" [formGroup]="form" [notes]="notes">
-            <ng-template #notes>
-              If enabled, users that rejoin after leaving will get their roles added again.
-            </ng-template>
-          </shared-settings-boolean>
-        </nz-tab>
-      </nz-tabset>
-    </form>
+    <nz-tabset>
+      <nz-tab nzTitle="Settings">
+        <nz-spin [nzSpinning]="loading">
+          <form nz-form nzLayout="vertical">
+            <shared-settings-small-text placeholder="L!" id="prefix" name="Prefix"
+                                        [required]="false" [disabled]="loading" [loading]="loading"
+                                        [formGroup]="form" [nzErrorTip]="prefixError">
+              <ng-template #prefixError let-control>
+                <ng-container *ngIf="control.hasError('maxlength')">
+                  Prefix must be up to 8 characters only.
+                </ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">
+                  Invalid prefix.
+                </ng-container>
+              </ng-template>
+            </shared-settings-small-text>
+            <shared-settings-select id="language" name="Language" [formGroup]="form"
+                                    [loading]="loading" [disabled]="loading"
+                                    [options]="this.languages"></shared-settings-select>
+            <shared-settings-boolean id="keepRolesEnabled" name="Keep Roles"
+                                     [loading]="loading" [disabled]="loading"
+                                     [formGroup]="form" [notes]="notes">
+              <ng-template #notes>
+                If enabled, users that rejoin after leaving will get their roles added again.
+              </ng-template>
+            </shared-settings-boolean>
+          </form>
+          <div style="float:right">
+            <button nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary" (click)="save()">
+              Save Changes
+            </button>
+          </div>
+        </nz-spin>
+      </nz-tab>
+    </nz-tabset>
   </nz-col>
   <nz-col nzMd="4" nzSm="0"></nz-col>
-</nz-row>
-<nz-row>
-  <ng-template #unsaved>
-    <nz-space>
-      <nz-space-item>
-        You have unsaved changes
-      </nz-space-item>
-      <nz-space-item>
-        <button nz-button nzSize="small" nzType="primary" (click)="save()">Save Changes</button>
-      </nz-space-item>
-    </nz-space>
-  </ng-template>
 </nz-row>

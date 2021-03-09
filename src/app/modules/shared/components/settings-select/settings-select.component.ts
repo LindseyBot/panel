@@ -19,6 +19,15 @@ export class SettingsSelectComponent implements OnInit {
   name: string;
 
   @Input()
+  disabled: boolean = false;
+
+  @Input()
+  required: boolean = true;
+
+  @Input()
+  loading: boolean = false;
+
+  @Input()
   nzErrorTip?: string | TemplateRef<{
     $implicit: AbstractControl | NgModel;
   }>;
