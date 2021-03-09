@@ -1,0 +1,45 @@
+<nz-row>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="6" nzXs="24">
+    <h4>Cookies Leaderboard</h4>
+    <nz-table #basicTable [nzData]="data" [nzLoading]="loading" [nzTotal]="total"
+              [nzFrontPagination]="false" [nzPageSize]="100" nzHideOnSinglePage
+              [nzPageIndex]="index" (nzQueryParams)="onQueryParamsChange($event)">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Username</th>
+        <th nzAlign="center">Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>1</td>
+        <td>{{ data.user.username }}#{{data.user.discriminator}}</td>
+        <td nzAlign="center">{{ data.count }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="6" nzXs="24">
+    <h4>Slot Wins Leaderboard</h4>
+    <nz-table #basicTable [nzData]="data" [nzLoading]="loading">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Username</th>
+        <th>Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>1</td>
+        <td>{{ data.user.username }}#{{data.user.discriminator}}</td>
+        <td>{{ data.count }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+</nz-row>

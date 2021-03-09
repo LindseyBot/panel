@@ -34,6 +34,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule)
   },
   {
+    path: 'leaderboards',
+    component: LoggedOutLayoutComponent,
+    loadChildren: () => import('./modules/leaderboard/leaderboard.module').then(m => m.LeaderboardModule)
+  },
+  {
     path: 'selector',
     component: NavbarLayoutComponent,
     canActivate: [LoggedInGuard],
