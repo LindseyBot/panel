@@ -7,6 +7,7 @@ import {GuildSelectedGuard} from "../../services/guards/guild-selected.guard";
 import {SettingsAutomodComponent} from "./pages/settings-automod/settings-automod.component";
 import {SettingsLoggingComponent} from "./pages/settings-logging/settings-logging.component";
 import {SettingsAccessControlComponent} from "./pages/settings-access-control/settings-access-control.component";
+import {SettingsMusicComponent} from "./pages/settings-music/settings-music.component";
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: ':guild/automod',
     component: SettingsAutomodComponent,
+    canActivate: [LoggedInGuard, GuildSelectedGuard]
+  },
+  {
+    path: ':guild/music',
+    component: SettingsMusicComponent,
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {

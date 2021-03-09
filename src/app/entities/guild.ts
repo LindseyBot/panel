@@ -1,5 +1,4 @@
-import {TextChannel} from "./text-channel";
-import {VoiceChannel} from "./voice-channel";
+import {Channel} from "./channel";
 
 export class Guild {
 
@@ -7,7 +6,6 @@ export class Guild {
   name: string;
   iconUrl: string;
 
-  textChannels: TextChannel[];
-  voiceChannels: VoiceChannel[];
+  channels: Channel[];
 
 }

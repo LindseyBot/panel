@@ -51,10 +51,9 @@
         </span>
       </li>
       <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
-          [nzTooltipTitle]="isCollapsed ? 'Music' : ''"><span>
-        <i nz-icon>
-          <object type="image/svg+xml" class="fas" data="assets/music-solid.svg"></object>
-        </i>
+          [nzTooltipTitle]="isCollapsed ? 'Music' : ''">
+        <i nz-icon nzType="customer-service"></i>
+        <span>
           <a routerLink="{{this.guildId}}/music">Music</a>
         </span>
       </li>

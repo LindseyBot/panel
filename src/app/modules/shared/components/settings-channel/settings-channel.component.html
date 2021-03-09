@@ -1,0 +1,33 @@
+<nz-form-item [formGroup]="formGroup">
+  <nz-form-label [nzRequired]="required">{{name}}</nz-form-label>
+  <nz-alert nzType="info" [nzMessage]="notes" [hidden]="!notes" nzShowIcon></nz-alert>
+  <br [hidden]="!notes"/>
+  <nz-form-control nzHasFeedback nzValidatingTip="Checking..." [nzErrorTip]="nzErrorTip">
+    <nz-select formControlName="{{id}}" [nzCustomTemplate]="defaultTemplate" nzPlaceHolder="None"
+               [nzDisabled]="disabled" [required]="required" [nzLoading]="loading" nzShowSearch>
+      <span *ngFor="let channel of guild.channels">
+        <nz-option [nzLabel]="channel.type + ' ' + channel.name" [nzValue]="channel.id"
+                   *ngIf="channel.type !== 'CATEGORY'"
+                   [nzDisabled]="channel.type !== this.filter" nzCustomContent>
+          <i nz-icon nzType="borderless-table" [hidden]="channel.type === 'VOICE'"></i>
+          <i nz-icon nzType="customer-service" [hidden]="channel.type === 'TEXT'"></i>
+          {{channel.name}}
+        </nz-option>
+        <nz-option-group [nzLabel]="channel.name">
+          <nz-option *ngFor="let child of channel.channels" [nzLabel]="child.type + ' ' + child.name"
+                     [nzValue]="child.id"
+                     [nzDisabled]="child.type !== this.filter" nzCustomContent>
+            <i nz-icon nzType="borderless-table" [hidden]="child.type === 'VOICE'"></i>
+            <i nz-icon nzType="customer-service" [hidden]="child.type === 'TEXT'"></i>
+            {{child.name}}
+          </nz-option>
+        </nz-option-group>
+      </span>
+    </nz-select>
+    <ng-template #defaultTemplate let-selected>
+      <i nz-icon nzType="borderless-table" [hidden]="selected.nzLabel.split(' ')[0] === 'VOICE'"></i>
+      <i nz-icon nzType="customer-service" [hidden]="selected.nzLabel.split(' ')[0] === 'TEXT'"></i>
+      {{ selected.nzLabel.split(' ')[1] }}
+    </ng-template>
+  </nz-form-control>
+</nz-form-item>
