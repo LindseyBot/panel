@@ -28,6 +28,7 @@ import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzToolTipModule} from "ng-zorro-antd/tooltip";
 import {NzTableModule} from "ng-zorro-antd/table";
 import {NzAlertModule} from "ng-zorro-antd/alert";
+import {NzNotificationModule} from "ng-zorro-antd/notification";
 
 registerLocaleData(en);
 
@@ -58,7 +59,8 @@ registerLocaleData(en);
     NzModalModule,
     NzToolTipModule,
     NzTableModule,
-    NzAlertModule
+    NzAlertModule,
+    NzNotificationModule
   ],
   providers: [AppInitializerProvider, {provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent]
