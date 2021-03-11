@@ -27,6 +27,13 @@
                 If enabled, users that rejoin after leaving will get their roles added again.
               </ng-template>
             </shared-settings-boolean>
+            <shared-settings-boolean id="modLogEnabled" name="Moderation Log"
+                                     [loading]="loading" [disabled]="loading"
+                                     [formGroup]="form" [notes]="notes">
+              <ng-template #notes>
+                If enabled, a log of all moderation actions will be available on the panel.
+              </ng-template>
+            </shared-settings-boolean>
           </form>
           <div style="float:right">
             <button nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary" (click)="save()">

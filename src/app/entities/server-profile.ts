@@ -4,5 +4,6 @@ export class ServerProfile {
   prefix: string;
   language: string;
   keepRolesEnabled: boolean;
+  modLogEnabled: boolean;
 
 }

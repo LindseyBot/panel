@@ -36,7 +36,8 @@ export class SettingsCoreComponent implements OnInit {
     this.form = this.formBuilder.group({
       prefix: ['', [Validators.maxLength(8), Validators.pattern('[^\\s]*')]],
       language: ['', [Validators.required]],
-      keepRolesEnabled: ['', [Validators.required]]
+      keepRolesEnabled: ['', [Validators.required]],
+      modLogEnabled: ['', [Validators.required]]
     });
   }
 
