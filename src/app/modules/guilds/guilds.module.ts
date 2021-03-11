@@ -32,6 +32,7 @@ import {NzNotificationModule} from "ng-zorro-antd/notification";
 import {NzSpinModule} from "ng-zorro-antd/spin";
 import {SettingsMusicComponent} from './pages/settings-music/settings-music.component';
 import { SettingsStarboardComponent } from './pages/settings-starboard/settings-starboard.component';
+import { SettingsEmbedsComponent } from './pages/settings-embeds/settings-embeds.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { SettingsStarboardComponent } from './pages/settings-starboard/settings-
     TabWelcomeMessageComponent,
     SettingsAccessControlComponent,
     SettingsMusicComponent,
-    SettingsStarboardComponent
+    SettingsStarboardComponent,
+    SettingsEmbedsComponent
   ],
   imports: [
     CommonModule,

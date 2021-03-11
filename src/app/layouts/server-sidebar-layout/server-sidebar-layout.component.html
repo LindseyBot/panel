@@ -52,6 +52,13 @@
               <a routerLink="{{this.guildId}}/starboard">Starboard</a>
             </span>
           </li>
+          <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
+              [nzTooltipTitle]="isCollapsed ? 'Better Embeds' : ''">
+            <i nz-icon nzType="read"></i>
+            <span>
+              <a routerLink="{{this.guildId}}/embeds">Better Embeds</a>
+            </span>
+          </li>
         </ul>
       </li>
       <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter

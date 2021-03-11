@@ -9,6 +9,7 @@ import {SettingsLoggingComponent} from "./pages/settings-logging/settings-loggin
 import {SettingsAccessControlComponent} from "./pages/settings-access-control/settings-access-control.component";
 import {SettingsMusicComponent} from "./pages/settings-music/settings-music.component";
 import {SettingsStarboardComponent} from "./pages/settings-starboard/settings-starboard.component";
+import {SettingsEmbedsComponent} from "./pages/settings-embeds/settings-embeds.component";
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: ':guild/automod',
     component: SettingsAutomodComponent,
+    canActivate: [LoggedInGuard, GuildSelectedGuard]
+  },
+  {
+    path: ':guild/embeds',
+    component: SettingsEmbedsComponent,
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {

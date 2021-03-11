@@ -6,6 +6,7 @@ import {environment} from "../../../../environments/environment";
 import {ServerProfile} from "../../../entities/server-profile";
 import {MusicSettings} from "../../../entities/music-settings";
 import {StarboardSettings} from "../../../entities/starboard-settings";
+import {EmbedSettings} from "../../../entities/embed-settings";
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,16 @@ export class ServerSettingsService {
 
   putStarboard(guild: string, settings: StarboardSettings): Observable<StarboardSettings> {
     return this.http.put<StarboardSettings>(environment.API_URL + '/guilds/' + guild + '/starboard', settings,
+      {headers: this.authService.getHeaders()});
+  }
+
+  fetchEmbeds(guild: string): Observable<EmbedSettings> {
+    return this.http.get<EmbedSettings>(environment.API_URL + '/guilds/' + guild + '/embeds',
+      {headers: this.authService.getHeaders()});
+  }
+
+  putEmbeds(guild: string, settings: EmbedSettings): Observable<EmbedSettings> {
+    return this.http.put<EmbedSettings>(environment.API_URL + '/guilds/' + guild + '/embeds', settings,
       {headers: this.authService.getHeaders()});
   }
 
