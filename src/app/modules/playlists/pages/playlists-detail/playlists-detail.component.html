@@ -1,25 +1,53 @@
 <nz-row>
   <nz-col nzMd="4" nzSm="0"></nz-col>
   <nz-col nzMd="16" nzXs="24">
-    <nz-card [nzTitle]="avatarTemplate" [nzExtra]="description">
+    <button nz-button nzType="default" routerLink="/playlists">
+      <i nz-icon nzType="left"></i>
+      Back to Discover
+    </button>
+    <br/>
+    <br/>
+    <nz-card [nzTitle]="avatarTemplate" [nzExtra]="description" [nzLoading]="loading">
+      <nz-spin style="text-align: center;" [hidden]="songStatus === 1" nzTip="Loading Songs.." nzSimple></nz-spin>
       <nz-list nzItemLayout="vertical">
-        <nz-spin style="text-align: center;" [hidden]="!loading" nzSimple></nz-spin>
         <shared-playlist-track *ngFor="let track of tracks" [track]="track"></shared-playlist-track>
       </nz-list>
     </nz-card>
     <ng-template #avatarTemplate>
       <nz-space>
         <nz-space-item>
-          <nz-avatar [nzSrc]="playList.logoUrl"></nz-avatar>
+          <nz-avatar *ngIf="playList" [nzSrc]="playList.logoUrl"></nz-avatar>
         </nz-space-item>
         <nz-space-item>
-          <h3>{{playList.name}}</h3>
+          <h3 *ngIf="playList">{{playList.name}}</h3>
         </nz-space-item>
       </nz-space>
     </ng-template>
     <ng-template #description>
-      <span style="color: grey;">
-        By {{playList.user.username}}
+      <span style="color: grey;" *ngIf="playList">
+        <nz-tag>
+          <i nz-icon nzType="tag"></i>
+          {{playList.genre}}
+        </nz-tag>
+        | By {{playList.user.username}}
+        <span *ngIf="voteStatus === 1">
+          |
+          <i nz-icon nzType="like" class="clickable" (click)="vote(true)"
+             [ngClass]="{'liked': this.votes.voted === true}"></i>
+          {{votes.up}}
+          |
+          <i nz-icon nzType="dislike" class="clickable" (click)="vote(false)"
+             [ngClass]="{'disliked': this.votes.voted === false}"></i>
+          {{votes.down}}
+        </span>
+        <span *ngIf="voteStatus === 2">
+          |
+          <i nz-icon nzType="like"></i>
+          {{votes.up}}
+          |
+          <i nz-icon nzType="dislike"></i>
+          {{votes.down}}
+        </span>
       </span>
     </ng-template>
   </nz-col>

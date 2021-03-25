@@ -9,5 +9,6 @@ export class PlayList {
   shuffle: boolean;
   logoUrl: string;
   security: string;
+  genre: string;
 
 }

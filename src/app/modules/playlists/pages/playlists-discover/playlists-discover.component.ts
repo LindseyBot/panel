@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PlaylistService} from "../../services/playlist.service";
-import {PlayList} from "../../../../entities/play-list";
-import {Page} from "../../../../entities/page";
+import {PlayListSummary} from "../../../../entities/play-list-summary";
 
 @Component({
   selector: 'app-playlists-discover',
@@ -11,40 +10,22 @@ import {Page} from "../../../../entities/page";
 export class PlaylistsDiscoverComponent implements OnInit {
 
   loading = true;
-  lists: Page<PlayList> = new Page<PlayList>(0);
-
-  cursorForward: string = '0';
-  cursorBackward: string = '0';
-
-  lastDir: string;
-  hasMorePages = true;
+  lists: PlayListSummary[] = [];
 
   constructor(private service: PlaylistService) {
   }
 
   ngOnInit(): void {
-    this.loadPage(this.cursorForward, 'asc', true);
+    this.loadPage('0');
   }
 
-  loadPage(cursor: string, dir: string, firstLoad?: boolean): void {
+  loadPage(cursor: string): void {
     this.loading = true;
-    this.service.discover(cursor, dir).subscribe(items => {
-      this.lists = items;
+    this.service.discover(cursor).subscribe(items => {
+      items.forEach(item => this.lists.push(item));
       this.loading = false;
-      this.hasMorePages = !items.last;
-      if (items.items.length > 0) {
-        this.cursorForward = items.items[items.items.length - 1].id;
-        this.cursorBackward = items.items[0].id;
-      }
-      if (firstLoad) {
-        this.lastDir = 'desc';
-        this.hasMorePages = false;
-      } else {
-        this.lastDir = dir;
-      }
     }, () => {
       // error?
-      this.hasMorePages = true;
       this.loading = false;
     });
   }
