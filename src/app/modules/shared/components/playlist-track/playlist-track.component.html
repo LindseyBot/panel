@@ -1,0 +1,14 @@
+<nz-list-item>
+  <nz-list-item-meta>
+    <nz-list-item-meta-avatar nzSrc="https://img.youtube.com/vi/{{track.code}}/0.jpg"></nz-list-item-meta-avatar>
+    <nz-list-item-meta-title>
+      <a [href]="url" target="_blank">{{ track.title }}</a>
+    </nz-list-item-meta-title>
+    <nz-list-item-meta-description>
+      {{ track.author }} | {{duration}}
+    </nz-list-item-meta-description>
+  </nz-list-item-meta>
+  <nz-list-item-extra [hidden]="true">
+    <i nz-icon nzType="delete" style="margin-right: 8px;"></i>
+  </nz-list-item-extra>
+</nz-list-item>

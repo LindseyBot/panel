@@ -1,0 +1,4 @@
+::ng-deep .ant-card-body {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}

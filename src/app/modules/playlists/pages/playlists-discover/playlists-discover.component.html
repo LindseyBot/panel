@@ -1,0 +1,52 @@
+<nz-row>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="16" nzXs="24">
+    <nz-card nzTitle="Discover">
+      <nz-table [nzLoading]="loading" nzTemplateMode nzHideOnSinglePage>
+        <thead>
+        <tr>
+          <th nzWidth="48px"></th>
+          <th>Name</th>
+          <th nzWidth="32px" nzAlign="center">Upvotes</th>
+          <th nzWidth="32px" nzAlign="center">Downvotes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of lists.items" [routerLink]="item.id" class="clickable">
+          <td>
+            <img class="logo" [src]="item.logoUrl" [alt]="item.name">
+          </td>
+          <td>
+            <h3 style="margin-top: 8px">{{item.name}}</h3>
+          </td>
+          <td nzAlign="center">
+            <h3>1</h3>
+          </td>
+          <td nzAlign="center">
+            <h3>1</h3>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
+      <br/>
+      <div style="float: right">
+        <nz-space>
+          <nz-space-item>
+            <button nz-button nzType="default" nzSize="small" [disabled]="this.lastDir === 'desc' && !this.hasMorePages"
+                    [nzLoading]="loading"
+                    (click)="this.loadPage(this.cursorBackward, 'desc')">
+              <i nz-icon nzType="left"></i>
+            </button>
+          </nz-space-item>
+          <nz-space-item>
+            <button nz-button nzType="default" nzSize="small" [disabled]="this.lastDir === 'asc' && !this.hasMorePages"
+                    [nzLoading]="loading" (click)="this.loadPage(this.cursorForward, 'asc')">
+              <i nz-icon nzType="right"></i>
+            </button>
+          </nz-space-item>
+        </nz-space>
+      </div>
+    </nz-card>
+  </nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+</nz-row>

@@ -39,6 +39,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/leaderboard/leaderboard.module').then(m => m.LeaderboardModule)
   },
   {
+    path: 'playlists',
+    component: NavbarLayoutComponent,
+    loadChildren: () => import('./modules/playlists/playlists.module').then(m => m.PlaylistsModule)
+  },
+  {
     path: 'selector',
     component: NavbarLayoutComponent,
     canActivate: [LoggedInGuard],

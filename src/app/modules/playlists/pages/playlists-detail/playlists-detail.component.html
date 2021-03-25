@@ -1,0 +1,27 @@
+<nz-row>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="16" nzXs="24">
+    <nz-card [nzTitle]="avatarTemplate" [nzExtra]="description">
+      <nz-list nzItemLayout="vertical">
+        <nz-spin style="text-align: center;" [hidden]="!loading" nzSimple></nz-spin>
+        <shared-playlist-track *ngFor="let track of tracks" [track]="track"></shared-playlist-track>
+      </nz-list>
+    </nz-card>
+    <ng-template #avatarTemplate>
+      <nz-space>
+        <nz-space-item>
+          <nz-avatar [nzSrc]="playList.logoUrl"></nz-avatar>
+        </nz-space-item>
+        <nz-space-item>
+          <h3>{{playList.name}}</h3>
+        </nz-space-item>
+      </nz-space>
+    </ng-template>
+    <ng-template #description>
+      <span style="color: grey;">
+        By {{playList.user.username}}
+      </span>
+    </ng-template>
+  </nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+</nz-row>

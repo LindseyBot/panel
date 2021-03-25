@@ -21,6 +21,8 @@ import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzDividerModule} from "ng-zorro-antd/divider";
 import {SettingsChannelComponent} from './components/settings-channel/settings-channel.component';
 import {NzIconModule} from "ng-zorro-antd/icon";
+import { PlaylistTrackComponent } from './components/playlist-track/playlist-track.component';
+import {NzListModule} from "ng-zorro-antd/list";
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import {NzIconModule} from "ng-zorro-antd/icon";
     SettingsSelectComponent,
     SettingsBigTextComponent,
     ModalUserReferenceComponent,
-    SettingsChannelComponent
+    SettingsChannelComponent,
+    PlaylistTrackComponent
   ],
   exports: [
     SettingsSmallTextComponent,
@@ -40,25 +43,27 @@ import {NzIconModule} from "ng-zorro-antd/icon";
     SettingsSelectComponent,
     SettingsBigTextComponent,
     SettingsChannelComponent,
+    PlaylistTrackComponent,
   ],
-  imports: [
-    CommonModule,
-    NzGridModule,
-    NzFormModule,
-    NzInputModule,
-    NzSelectModule,
-    NzSwitchModule,
-    NzSliderModule,
-    NzAlertModule,
-    ReactiveFormsModule,
-    NzSkeletonModule,
-    NzSpaceModule,
-    NzButtonModule,
-    FormsModule,
-    NzModalModule,
-    NzDividerModule,
-    NzIconModule
-  ]
+    imports: [
+        CommonModule,
+        NzGridModule,
+        NzFormModule,
+        NzInputModule,
+        NzSelectModule,
+        NzSwitchModule,
+        NzSliderModule,
+        NzAlertModule,
+        ReactiveFormsModule,
+        NzSkeletonModule,
+        NzSpaceModule,
+        NzButtonModule,
+        FormsModule,
+        NzModalModule,
+        NzDividerModule,
+        NzIconModule,
+        NzListModule
+    ]
 })
 export class SharedModule {
 }
