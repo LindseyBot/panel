@@ -26,6 +26,7 @@ export class SettingsMusicComponent implements OnInit {
     this.form = this.formBuilder.group({
       logTracks: ['', [Validators.required]],
       logChannel: [''],
+      activePlayList: ['']
     });
   }
 

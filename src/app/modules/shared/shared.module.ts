@@ -23,6 +23,7 @@ import {SettingsChannelComponent} from './components/settings-channel/settings-c
 import {NzIconModule} from "ng-zorro-antd/icon";
 import { PlaylistTrackComponent } from './components/playlist-track/playlist-track.component';
 import {NzListModule} from "ng-zorro-antd/list";
+import { SettingsSelectPlaylistComponent } from './components/settings-select-playlist/settings-select-playlist.component';
 
 
 @NgModule({
@@ -34,17 +35,19 @@ import {NzListModule} from "ng-zorro-antd/list";
     SettingsBigTextComponent,
     ModalUserReferenceComponent,
     SettingsChannelComponent,
-    PlaylistTrackComponent
-  ],
-  exports: [
-    SettingsSmallTextComponent,
-    SettingsBooleanComponent,
-    SettingsSliderComponent,
-    SettingsSelectComponent,
-    SettingsBigTextComponent,
-    SettingsChannelComponent,
     PlaylistTrackComponent,
+    SettingsSelectPlaylistComponent
   ],
+    exports: [
+        SettingsSmallTextComponent,
+        SettingsBooleanComponent,
+        SettingsSliderComponent,
+        SettingsSelectComponent,
+        SettingsBigTextComponent,
+        SettingsChannelComponent,
+        PlaylistTrackComponent,
+        SettingsSelectPlaylistComponent,
+    ],
     imports: [
         CommonModule,
         NzGridModule,

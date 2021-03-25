@@ -9,10 +9,12 @@
                                      [required]="true" [disabled]="loading" [loading]="loading"
                                      [formGroup]="form"></shared-settings-boolean>
             <shared-settings-channel id="logChannel" name="Log channel"
-                                     [guild]="guild"
-                                     [loading]="loading"
+                                     [guild]="guild" [loading]="loading" [required]="false"
                                      [disabled]="loading || !this.form.get('logTracks').value"
                                      [formGroup]="form"></shared-settings-channel>
+            <shared-select-playlist id="activePlayList" name="PlayList"
+                                    [required]="true" [disabled]="loading"
+                                    [formGroup]="form"></shared-select-playlist>
           </form>
           <div style="float:right">
             <button nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary" (click)="save()">
