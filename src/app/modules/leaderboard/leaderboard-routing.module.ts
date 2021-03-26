@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CookiesLeaderboardComponent} from "./pages/cookies-leaderboard/cookies-leaderboard.component";
+import {LeaderboardSummaryComponent} from "./pages/leaderboard-summary/leaderboard-summary.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: CookiesLeaderboardComponent
+    component: LeaderboardSummaryComponent
   }
 ];
 

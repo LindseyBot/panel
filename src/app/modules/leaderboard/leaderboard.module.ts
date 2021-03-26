@@ -23,13 +23,15 @@ import {NzAlertModule} from "ng-zorro-antd/alert";
 import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzNotificationModule} from "ng-zorro-antd/notification";
 import {NzSpinModule} from "ng-zorro-antd/spin";
-import { CookiesLeaderboardComponent } from './pages/cookies-leaderboard/cookies-leaderboard.component';
+import {LeaderboardSummaryComponent} from './pages/leaderboard-summary/leaderboard-summary.component';
+import { LeaderboardListComponent } from './components/leaderboard-list/leaderboard-list.component';
 
 
 @NgModule({
   declarations: [
-
-  CookiesLeaderboardComponent],
+    LeaderboardSummaryComponent,
+    LeaderboardListComponent,
+  ],
   imports: [
     CommonModule,
     LeaderboardRoutingModule,

@@ -1,0 +1,25 @@
+<nz-table #basicTable [nzData]="data" [nzLoading]="loading"
+          [nzFrontPagination]="false" [nzPageIndex]="page" [nzPageSize]="size" [nzTotal]="total">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Username</th>
+    <th>Total</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data; let i = index">
+    <td>
+      <img [hidden]="i !== 0 || this.page > 0" class="crown" src="https://cdn.lindseybot.net/icons/crown-1.png"
+           alt="CROWN_1">
+      <img [hidden]="i !== 1 || this.page > 0" class="crown" src="https://cdn.lindseybot.net/icons/crown-2.png"
+           alt="CROWN_2">
+      <img [hidden]="i !== 2 || this.page > 0" class="crown" src="https://cdn.lindseybot.net/icons/crown-3.png"
+           alt="CROWN_3">
+      {{i + 1}}
+    </td>
+    <td>{{ data.user.username }}#{{data.user.discriminator}}</td>
+    <td>{{ data.count }}</td>
+  </tr>
+  </tbody>
+</nz-table>
