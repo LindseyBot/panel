@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:8080'
+  API_URL: 'http://localhost:8080',
+  OAUTH_REDIRECT_URL: 'http://localhost:4200/auth/oauth2'
 };
 
 /*
