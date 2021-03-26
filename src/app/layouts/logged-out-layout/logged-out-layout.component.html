@@ -1,20 +1,48 @@
 <nz-layout class="app-layout">
   <nz-sider class="menu-sidebar"
             nzCollapsible
-            nzWidth="256px"
+            nzWidth="160px"
             nzBreakpoint="md"
             [(nzCollapsed)]="isCollapsed"
             [nzTrigger]="null">
     <div class="sidebar-logo">
       <a routerLink="/">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Lindsey Dashboard</h1>
+        <h1>Lindsey</h1>
       </a>
     </div>
   </nz-sider>
   <nz-layout>
     <nz-header style="position: fixed">
       <div class="app-header">
+        <div [ngClass]="{'left-header-small': isCollapsed, 'left-header-big': !isCollapsed}">
+          <nz-space>
+            <nz-space-item>
+              <a routerLink="/" class="clickable-link">
+                <i nz-icon nzType="book"></i>
+                <span [hidden]="isCollapsed"> Documentation</span>
+              </a>
+            </nz-space-item>
+            <nz-space-item>
+              <nz-divider nzType="vertical"></nz-divider>
+            </nz-space-item>
+            <nz-space-item>
+              <a routerLink="/playlists" class="clickable-link">
+                <i nz-icon nzType="customer-service"></i>
+                <span [hidden]="isCollapsed"> PlayLists</span>
+              </a>
+            </nz-space-item>
+            <nz-space-item>
+              <nz-divider nzType="vertical"></nz-divider>
+            </nz-space-item>
+            <nz-space-item>
+              <a routerLink="/leaderboards" class="clickable-link">
+                <i nz-icon nzType="line-chart"></i>
+                <span [hidden]="isCollapsed"> Leaderboards</span>
+              </a>
+            </nz-space-item>
+          </nz-space>
+        </div>
         <div class="right-header">
           <nz-space>
             <nz-space-item>

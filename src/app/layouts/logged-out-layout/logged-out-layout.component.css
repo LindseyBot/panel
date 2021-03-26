@@ -65,3 +65,12 @@ nz-content {
   font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
   vertical-align: middle;
 }
+
+.left-header-small {
+  display: inline-flex;
+  margin-left: 96px;
+}
+.left-header-big {
+  display: inline-flex;
+  margin-left: 176px;
+}
