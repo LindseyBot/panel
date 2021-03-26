@@ -16,7 +16,6 @@ import {NzDropDownModule} from "ng-zorro-antd/dropdown";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzSpaceModule} from "ng-zorro-antd/space";
 import {NzDividerModule} from "ng-zorro-antd/divider";
-import {NavbarLayoutComponent} from './layouts/navbar-layout/navbar-layout.component';
 import {ServerSidebarLayoutComponent} from './layouts/server-sidebar-layout/server-sidebar-layout.component';
 import {LoggedOutLayoutComponent} from './layouts/logged-out-layout/logged-out-layout.component';
 import {GuildListComponent} from './pages/guild-list/guild-list.component';
@@ -35,7 +34,6 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarLayoutComponent,
     ServerSidebarLayoutComponent,
     LoggedOutLayoutComponent,
     GuildListComponent

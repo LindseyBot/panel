@@ -26,14 +26,17 @@
               <nz-divider nzType="vertical"></nz-divider>
             </nz-space-item>
             <nz-space-item *ngIf="user">
-              <button nz-button routerLink="/selector">Control Panel</button>
+              <button [hidden]="isCollapsed" nz-button routerLink="/selector">Control Panel</button>
+              <button [hidden]="!isCollapsed" nz-button routerLink="/selector">
+                <i nz-icon nzType="dashboard"></i>
+              </button>
             </nz-space-item>
             <nz-space-item *ngIf="user">
               <nz-divider nzType="vertical"></nz-divider>
             </nz-space-item>
             <nz-space-item *ngIf="user">
               <nz-button-group>
-                <button nz-button>{{user.username}}#{{user.discriminator}}</button>
+                <button [hidden]="isCollapsed" nz-button>{{user.username}}#{{user.discriminator}}</button>
                 <button nz-button nz-dropdown [nzDropdownMenu]="userMenu" nzPlacement="bottomRight">
                   <i nz-icon nzType="ellipsis"></i>
                 </button>

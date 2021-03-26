@@ -104,25 +104,17 @@
               <nz-divider nzType="vertical"></nz-divider>
             </nz-space-item>
             <nz-space-item [hidden]="isCollapsed">
-              <nz-button-group>
-                <button nz-button disabled>Imperio Fabricio20</button>
-                <button nz-button nz-dropdown [nzDropdownMenu]="guildSelector" nzPlacement="bottomRight">
-                  <i nz-icon nzType="down"></i>
-                </button>
-              </nz-button-group>
-              <nz-dropdown-menu #guildSelector="nzDropdownMenu">
-                <ul nz-menu>
-                  <li nz-menu-item id="1234">Imperio Fabricio20</li>
-                  <li nz-menu-item id="4321">Lindsey Hangout</li>
-                </ul>
-              </nz-dropdown-menu>
+              <button [hidden]="isCollapsed" nz-button routerLink="/selector">Control Panel</button>
+              <button [hidden]="!isCollapsed" nz-button routerLink="/selector">
+                <i nz-icon nzType="dashboard"></i>
+              </button>
             </nz-space-item>
             <nz-space-item [hidden]="isCollapsed">
               <nz-divider nzType="vertical"></nz-divider>
             </nz-space-item>
             <nz-space-item>
               <nz-button-group>
-                <button nz-button>{{user.username}}#{{user.discriminator}}</button>
+                <button [hidden]="isCollapsed" nz-button>{{user.username}}#{{user.discriminator}}</button>
                 <button nz-button nz-dropdown [nzDropdownMenu]="userMenu" nzPlacement="bottomRight">
                   <i nz-icon nzType="ellipsis"></i>
                 </button>

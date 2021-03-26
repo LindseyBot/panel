@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ServerSidebarLayoutComponent} from "./layouts/server-sidebar-layout/server-sidebar-layout.component";
-import {NavbarLayoutComponent} from "./layouts/navbar-layout/navbar-layout.component";
 import {LoggedInGuard} from "./services/guards/logged-in.guard";
 import {GuildListComponent} from "./pages/guild-list/guild-list.component";
 import {LoggedOutLayoutComponent} from "./layouts/logged-out-layout/logged-out-layout.component";
@@ -24,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: NavbarLayoutComponent,
+    component: LoggedOutLayoutComponent,
     canActivate: [LoggedInGuard],
     loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
   },
@@ -40,12 +39,12 @@ const routes: Routes = [
   },
   {
     path: 'playlists',
-    component: NavbarLayoutComponent,
+    component: LoggedOutLayoutComponent,
     loadChildren: () => import('./modules/playlists/playlists.module').then(m => m.PlaylistsModule)
   },
   {
     path: 'selector',
-    component: NavbarLayoutComponent,
+    component: LoggedOutLayoutComponent,
     canActivate: [LoggedInGuard],
     children: [
       {
