@@ -2,10 +2,22 @@
   <nz-col nzMd="4" nzSm="0"></nz-col>
   <nz-col nzMd="8" nzXs="24">
     <h4>Cookies Leaderboard</h4>
+    <nz-alert nzType="info" [nzMessage]="cookies" nzShowIcon>
+      <ng-template #cookies>
+        The rich go here.
+      </ng-template>
+    </nz-alert>
+    <br/>
     <leaderboard-list type="COOKIES"></leaderboard-list>
   </nz-col>
   <nz-col nzMd="8" nzXs="24">
     <h4>Slot Wins Leaderboard</h4>
+    <nz-alert nzType="info" [nzMessage]="slots" nzShowIcon>
+      <ng-template #slots>
+        The lucky ones in here.
+      </ng-template>
+    </nz-alert>
+    <br/>
     <leaderboard-list type="SLOT_WINS"></leaderboard-list>
   </nz-col>
   <nz-col nzMd="4" nzSm="0"></nz-col>
