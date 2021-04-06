@@ -5,13 +5,19 @@
       <nz-tab nzTitle="Music">
         <nz-spin [nzSpinning]="loading">
           <form nz-form nzLayout="vertical">
-            <shared-settings-boolean id="logTracks" name="Log tracks"
-                                     [required]="true" [disabled]="loading" [loading]="loading"
-                                     [formGroup]="form"></shared-settings-boolean>
-            <shared-settings-channel id="logChannel" name="Log channel"
-                                     [guild]="guild" [loading]="loading" [required]="false"
-                                     [disabled]="loading || !this.form.get('logTracks').value"
-                                     [formGroup]="form"></shared-settings-channel>
+            <div nz-row nzGutter="16">
+              <div nz-col nzSpan="12">
+                <shared-settings-boolean id="logTracks" name="Log tracks"
+                                         [required]="true" [disabled]="loading" [loading]="loading"
+                                         [formGroup]="form"></shared-settings-boolean>
+              </div>
+              <div nz-col nzSpan="12">
+                <shared-settings-channel id="logChannel" name="Log channel"
+                                         [guild]="guild" [loading]="loading" [required]="false"
+                                         [disabled]="loading || !this.form.get('logTracks').value"
+                                         [formGroup]="form"></shared-settings-channel>
+              </div>
+            </div>
             <shared-select-playlist id="activePlayList" name="PlayList"
                                     [required]="true" [disabled]="loading"
                                     [formGroup]="form"></shared-select-playlist>

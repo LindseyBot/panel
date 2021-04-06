@@ -9,8 +9,7 @@ import {AuthService} from "../../../../services/auth.service";
 })
 export class Oauth2Component implements OnInit {
 
-  token: string;
-  expires: string;
+  error = false;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) {
   }
@@ -23,12 +22,15 @@ export class Oauth2Component implements OnInit {
         const argument = split.split('=');
         args[argument[0]] = argument[1];
       }
-      this.token = args['access_token'];
-      this.expires = args['expires_in'];
-      if (this.token) {
-        this.authService.login(this.token).subscribe(() => {
+      const token = args['access_token'];
+      if (token) {
+        this.authService.login(token).subscribe(() => {
           this.router.navigate(['/selector']).finally();
+        }, () => {
+          this.error = true;
         });
+      } else {
+        this.router.navigate(['/auth/login']).finally();
       }
     });
   }

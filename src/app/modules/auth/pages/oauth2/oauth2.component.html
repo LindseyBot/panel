@@ -1,3 +1,4 @@
-<p>oauth2 works!</p>
-<p>Token: {{token}}</p>
-<p>Expires: {{expires}}</p>
+<div class="parent">
+  <p *ngIf="!error">Logging in...</p>
+  <p *ngIf="error">Failed to log in, please <a routerLink="/auth/login">try again</a>.</p>
+</div>
