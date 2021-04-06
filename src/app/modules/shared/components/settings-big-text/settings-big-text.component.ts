@@ -18,7 +18,10 @@ export class SettingsBigTextComponent implements OnInit {
   name: string;
 
   @Input()
-  placeholder: string;
+  notes: string;
+
+  @Input()
+  nzRequired: boolean = true;
 
   @Input()
   nzErrorTip?: string | TemplateRef<{
@@ -26,18 +29,7 @@ export class SettingsBigTextComponent implements OnInit {
   }>;
 
   @Input()
-  notes?: string | TemplateRef<{
-    $implicit: AbstractControl | NgModel;
-  }>;
-
-  @Input()
-  loading: boolean = false;
-
-  @Input()
-  required: boolean = true;
-
-  @Input()
-  disabled: boolean = false;
+  placeholder: string;
 
   constructor() {
   }

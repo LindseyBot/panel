@@ -5,9 +5,8 @@
       <nz-tab nzTitle="Settings">
         <nz-spin [nzSpinning]="loading">
           <form nz-form nzLayout="vertical">
-            <shared-settings-small-text placeholder="L!" id="prefix" name="Prefix"
-                                        [required]="false" [disabled]="loading" [loading]="loading"
-                                        [formGroup]="form" [nzErrorTip]="prefixError">
+            <shared-settings-small-text id="prefix" [formGroup]="form" name="settings.core.prefix.name"
+                                        [nzRequired]="false" [nzErrorTip]="prefixError" placeholder="L!">
               <ng-template #prefixError let-control>
                 <ng-container *ngIf="control.hasError('maxlength')">
                   Prefix must be up to 8 characters only.
@@ -17,23 +16,12 @@
                 </ng-container>
               </ng-template>
             </shared-settings-small-text>
-            <shared-settings-select id="language" name="Language" [formGroup]="form"
-                                    [loading]="loading" [disabled]="loading"
-                                    [options]="this.languages"></shared-settings-select>
-            <shared-settings-boolean id="keepRolesEnabled" name="Keep Roles"
-                                     [loading]="loading" [disabled]="loading"
-                                     [formGroup]="form" [notes]="notes">
-              <ng-template #notes>
-                If enabled, users that rejoin after leaving will get their roles added again.
-              </ng-template>
-            </shared-settings-boolean>
-            <shared-settings-boolean id="modLogEnabled" name="Moderation Log"
-                                     [loading]="loading" [disabled]="loading"
-                                     [formGroup]="form" [notes]="notes">
-              <ng-template #notes>
-                If enabled, a log of all moderation actions will be available on the panel.
-              </ng-template>
-            </shared-settings-boolean>
+            <shared-settings-select id="language" [formGroup]="form" name="settings.core.language.name"
+                                    [loading]="loading" [options]="this.languages"></shared-settings-select>
+            <shared-settings-boolean id="keepRolesEnabled" [formGroup]="form" name="settings.core.keepRoles.name"
+                                     notes="settings.core.keepRoles.description"></shared-settings-boolean>
+            <shared-settings-boolean id="modLogEnabled" [formGroup]="form" name="settings.core.modLog.name"
+                                     notes="settings.core.modLog.description"></shared-settings-boolean>
           </form>
           <div style="float:right">
             <button nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary" (click)="save()">

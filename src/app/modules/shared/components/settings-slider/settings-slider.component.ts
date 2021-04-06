@@ -18,6 +18,12 @@ export class SettingsSliderComponent implements OnInit {
   name: string;
 
   @Input()
+  notes: string;
+
+  @Input()
+  nzRequired: boolean = true;
+
+  @Input()
   nzErrorTip?: string | TemplateRef<{
     $implicit: AbstractControl | NgModel;
   }>;
@@ -27,20 +33,6 @@ export class SettingsSliderComponent implements OnInit {
 
   @Input()
   max: number;
-
-  @Input()
-  notes?: string | TemplateRef<{
-    $implicit: AbstractControl | NgModel;
-  }>;
-
-  @Input()
-  loading: boolean = false;
-
-  @Input()
-  required: boolean = true;
-
-  @Input()
-  disabled: boolean = false;
 
   constructor() {
   }

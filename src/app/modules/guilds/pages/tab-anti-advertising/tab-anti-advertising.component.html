@@ -1,14 +1,9 @@
 <nz-spin [nzSpinning]="loading">
   <form nz-form nzLayout="vertical">
-    <shared-settings-boolean [formGroup]="form" id="enabled" name="Status"
-                             [disabled]="loading" [loading]="loading">
+    <shared-settings-boolean [formGroup]="form" id="enabled" name="Status">
     </shared-settings-boolean>
     <shared-settings-slider [formGroup]="form" id="strikes" name="Strikes" nzErrorTip="#strikesError"
-                            [disabled]="loading" [loading]="loading"
-                            max="10" min="1" [notes]="notes">
-      <ng-template #notes>
-        How many strikes should a user receive for each violation.
-      </ng-template>
+                            max="10" min="1" notes="How many strikes should a user receive for each violation.">
       <ng-template #strikesError let-control>
         <ng-container *ngIf="control.hasError('max')">
           Strikes exceeds limit (10).

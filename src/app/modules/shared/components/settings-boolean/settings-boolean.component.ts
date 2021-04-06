@@ -2,49 +2,41 @@ import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {AbstractControl, FormGroup, NgModel} from "@angular/forms";
 
 @Component({
-    selector: 'shared-settings-boolean',
-    templateUrl: './settings-boolean.component.html',
-    styleUrls: ['./settings-boolean.component.css']
+  selector: 'shared-settings-boolean',
+  templateUrl: './settings-boolean.component.html',
+  styleUrls: ['./settings-boolean.component.css']
 })
 export class SettingsBooleanComponent implements OnInit {
 
-    @Input()
-    formGroup: FormGroup;
+  @Input()
+  formGroup: FormGroup;
 
-    @Input()
-    id: string;
+  @Input()
+  id: string;
 
-    @Input()
-    name: string;
+  @Input()
+  name: string;
 
-    @Input()
-    required: boolean = true;
+  @Input()
+  notes: string;
 
-    @Input()
-    loading: boolean = false;
+  @Input()
+  nzRequired: boolean = true;
 
-    @Input()
-    disabled: boolean = false;
+  @Input()
+  nzErrorTip?: string | TemplateRef<{
+    $implicit: AbstractControl | NgModel;
+  }>;
 
-    @Input()
-    nzErrorTip?: string | TemplateRef<{
-        $implicit: AbstractControl | NgModel;
-    }>;
+  @Input()
+  rawNotes?: string | TemplateRef<{
+    $implicit: AbstractControl | NgModel;
+  }>;
 
-    @Input()
-    notes?: string | TemplateRef<{
-        $implicit: AbstractControl | NgModel;
-    }>;
+  constructor() {
+  }
 
-    @Input()
-    rawNotes?: string | TemplateRef<{
-        $implicit: AbstractControl | NgModel;
-    }>;
-
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
 
 }

@@ -1,10 +1,10 @@
 <nz-form-item [formGroup]="formGroup">
-  <nz-form-label [nzRequired]="required">{{name}}</nz-form-label>
-  <nz-alert nzType="info" [nzMessage]="notes" [hidden]="!notes" nzShowIcon></nz-alert>
+  <nz-form-label [nzRequired]="nzRequired">{{name | translate}}</nz-form-label>
+  <nz-alert nzType="info" [nzMessage]="notes | translate" [hidden]="!notes" nzShowIcon></nz-alert>
   <ng-container [ngTemplateOutlet]="rawNotes"></ng-container>
   <br [hidden]="!notes || rawNotes"/>
   <nz-form-control nzHasFeedback nzValidatingTip="Checking..." [nzErrorTip]="nzErrorTip">
-    <nz-select formControlName="{{id}}" [nzLoading]="loading" [nzDisabled]="disabled" [required]="required">
+    <nz-select formControlName="{{id}}">
       <nz-option [nzValue]="true" nzLabel="Enabled"></nz-option>
       <nz-option [nzValue]="false" nzLabel="Disabled"></nz-option>
     </nz-select>

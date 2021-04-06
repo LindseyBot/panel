@@ -7,16 +7,13 @@
           <form [formGroup]="form" (ngSubmit)="onSubmit($event)" nz-form nzLayout="vertical">
             <div nz-row nzGutter="16">
               <div nz-col nzSpan="12">
-                <shared-settings-boolean id="logTracks" name="Log tracks"
-                                         [required]="true" [disabled]="loading" [loading]="loading"
-                                         [formGroup]="form"></shared-settings-boolean>
+                <shared-settings-boolean id="logTracks" [formGroup]="form" name="settings.music.log.name"
+                                         nzRequired></shared-settings-boolean>
               </div>
               <div nz-col nzSpan="12">
-                <shared-settings-channel id="logChannel" [guild]="guild" [loading]="loading"
-                                         [name]="'settings.music.channel.name' | translate"
-                                         [required]="this.form.get('logTracks').value === true"
-                                         [disabled]="loading || !this.form.get('logTracks').value"
-                                         [formGroup]="form"></shared-settings-channel>
+                <shared-settings-channel id="logChannel" [formGroup]="form" name="settings.music.channel.name"
+                                         [nzRequired]="this.form.get('logTracks')?.value"
+                                         [guild]="guild"></shared-settings-channel>
               </div>
             </div>
             <!-- Mode and PlayList -->
@@ -28,15 +25,12 @@
               </div>
               <div nzGutter="16" nz-row>
                 <div nzSpan="12" nz-col>
-                  <shared-settings-select id="mode" [required]="true" [disabled]="loading" [loading]="loading"
-                                          [name]="'settings.music.mode.name' | translate"
-                                          [formGroup]="form" [options]="modes"></shared-settings-select>
+                  <shared-settings-select id="mode" [formGroup]="form" name="settings.music.mode.name"
+                                          [loading]="loading" [options]="modes"></shared-settings-select>
                 </div>
                 <div nzSpan="12" nz-col>
-                  <shared-select-playlist id="activePlayList" name="PlayList"
-                                          [required]="this.form.get('mode').value === 'PLAYLIST'"
-                                          [disabled]="this.form.get('mode').value === 'QUEUE'"
-                                          [formGroup]="form"></shared-select-playlist>
+                  <shared-select-playlist id="activePlayList" [formGroup]="form" name="PlayList"
+                                          [nzRequired]="this.form.get('mode')?.value === 'PLAYLIST'"></shared-select-playlist>
                 </div>
               </div>
             </section>

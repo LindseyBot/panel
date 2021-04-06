@@ -1,6 +1,5 @@
 import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {AbstractControl, FormGroup, NgModel} from "@angular/forms";
-import {NzSelectOptionInterface} from "ng-zorro-antd/select";
 import {Guild} from "../../../../entities/guild";
 
 @Component({
@@ -20,21 +19,13 @@ export class SettingsChannelComponent implements OnInit {
   name: string;
 
   @Input()
-  disabled: boolean = false;
+  notes: string;
 
   @Input()
-  required: boolean = true;
-
-  @Input()
-  loading: boolean = false;
+  nzRequired: boolean = true;
 
   @Input()
   nzErrorTip?: string | TemplateRef<{
-    $implicit: AbstractControl | NgModel;
-  }>;
-
-  @Input()
-  notes?: string | TemplateRef<{
     $implicit: AbstractControl | NgModel;
   }>;
 
@@ -43,8 +34,6 @@ export class SettingsChannelComponent implements OnInit {
 
   @Input()
   filter: string = 'TEXT';
-
-  options: NzSelectOptionInterface[] = [];
 
   constructor() {
   }

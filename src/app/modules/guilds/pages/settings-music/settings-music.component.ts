@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Guild} from "../../../../entities/guild";
 import {ActivatedRoute} from "@angular/router";
 import {DiscordService} from "../../../../services/discord.service";
@@ -7,7 +7,6 @@ import {FormService} from "../../../../services/form.service";
 import {ServerSettingsService} from "../../services/server-settings.service";
 import {NzNotificationService} from "ng-zorro-antd/notification";
 import {NzSelectOptionInterface} from "ng-zorro-antd/select";
-import {skip} from "rxjs/operators";
 
 @Component({
   selector: 'app-settings-music',
@@ -36,10 +35,14 @@ export class SettingsMusicComponent implements OnInit {
               private formBuilder: FormBuilder, private formService: FormService,
               private service: ServerSettingsService, private nzNotifications: NzNotificationService) {
     this.form = this.formBuilder.group({
-      logTracks: ['', [Validators.required]],
-      logChannel: [''],
-      mode: ['', Validators.required],
-      activePlayList: ['']
+      logTracks: new FormControl(null, [
+        Validators.required
+      ]),
+      logChannel: new FormControl(null, []),
+      mode: new FormControl(null, [
+        Validators.required
+      ]),
+      activePlayList: new FormControl(null, [])
     });
   }
 
@@ -52,10 +55,34 @@ export class SettingsMusicComponent implements OnInit {
       });
     });
     // Listen to changes
-    this.form.valueChanges.pipe(skip(2)).subscribe(() => {
+    this.form.valueChanges.subscribe(() => {
       if (!this.changesDetected) {
-        setTimeout(() => this.changesDetected = true, 0);
+        this.changesDetected = true;
       }
+    });
+    // Disable logChannel in case logTracks is disabled
+    this.form.get('logTracks').valueChanges.subscribe((value) => {
+      const control = this.form.get('logChannel');
+      if (value) {
+        control.enable();
+        control.setValidators([Validators.required]);
+      } else {
+        control.disable();
+        control.clearValidators();
+      }
+      control.updateValueAndValidity();
+    });
+    // Disable playlist selector in case mode is Queue
+    this.form.get('mode').valueChanges.subscribe((value) => {
+      const control = this.form.get('activePlayList');
+      if (value === 'PLAYLIST') {
+        control.enable();
+        control.setValidators([Validators.required]);
+      } else {
+        control.disable();
+        control.clearValidators();
+      }
+      control.updateValueAndValidity();
     });
   }
 

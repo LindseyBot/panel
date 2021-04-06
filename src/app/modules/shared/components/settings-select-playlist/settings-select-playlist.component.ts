@@ -20,18 +20,13 @@ export class SettingsSelectPlaylistComponent implements OnInit {
   name: string;
 
   @Input()
-  disabled: boolean = false;
+  notes: string;
 
   @Input()
-  required: boolean = true;
+  nzRequired: boolean = true;
 
   @Input()
   nzErrorTip?: string | TemplateRef<{
-    $implicit: AbstractControl | NgModel;
-  }>;
-
-  @Input()
-  notes?: string | TemplateRef<{
     $implicit: AbstractControl | NgModel;
   }>;
 

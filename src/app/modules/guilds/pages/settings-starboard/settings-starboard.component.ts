@@ -19,7 +19,6 @@ export class SettingsStarboardComponent implements OnInit {
   loading: boolean = true;
 
   guild: Guild;
-  isEnabled = false;
 
   constructor(private route: ActivatedRoute, private discord: DiscordService,
               private formBuilder: FormBuilder, private formService: FormService,
@@ -40,7 +39,7 @@ export class SettingsStarboardComponent implements OnInit {
     this.discord.getGuild(this.route.snapshot.paramMap.get('guild')).subscribe(guild => {
       this.guild = guild;
       this.service.fetchStarboard(guild.id).subscribe(settings => {
-        this.form.patchValue(settings);
+        this.form.reset(settings);
         this.changesDetected = false;
         this.loading = false;
       });
