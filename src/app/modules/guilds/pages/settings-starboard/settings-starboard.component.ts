@@ -3,9 +3,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Guild} from "../../../../entities/guild";
 import {ActivatedRoute} from "@angular/router";
 import {DiscordService} from "../../../../services/discord.service";
-import {FormService} from "../../../../services/form.service";
 import {ServerSettingsService} from "../../services/server-settings.service";
 import {NzNotificationService} from "ng-zorro-antd/notification";
+import {skipWhile} from "rxjs/operators";
 
 @Component({
   selector: 'app-settings-starboard',
@@ -20,9 +20,13 @@ export class SettingsStarboardComponent implements OnInit {
 
   guild: Guild;
 
-  constructor(private route: ActivatedRoute, private discord: DiscordService,
-              private formBuilder: FormBuilder, private formService: FormService,
-              private service: ServerSettingsService, private nzNotifications: NzNotificationService) {
+  constructor(
+    private route: ActivatedRoute,
+    private discord: DiscordService,
+    private formBuilder: FormBuilder,
+    private service: ServerSettingsService,
+    private nzNotifications: NzNotificationService
+  ) {
     this.form = this.formBuilder.group({
       enabled: new FormControl(null, [
         Validators.required
@@ -40,40 +44,39 @@ export class SettingsStarboardComponent implements OnInit {
       this.guild = guild;
       this.service.fetchStarboard(guild.id).subscribe(settings => {
         this.form.reset(settings);
-        this.changesDetected = false;
         this.loading = false;
       });
     });
     // Listen to changes
-    this.form.valueChanges.subscribe(() => {
-      if (this.loading) {
-        return;
-      }
+    this.form.valueChanges.pipe(skipWhile(() => this.loading)).subscribe(() => {
       if (!this.changesDetected) {
         this.changesDetected = true;
       }
     });
+    // Disable stars and channels if enabled is false
+    this.form.get('enabled').valueChanges.subscribe((value) => {
+      const starsControl = this.form.get('minStars');
+      const channelControl = this.form.get('channel');
+      if (value) {
+        starsControl.enable();
+        starsControl.setValidators([Validators.min(1), Validators.max(10), Validators.required]);
+        channelControl.enable();
+        channelControl.setValidators([Validators.required]);
+      } else {
+        starsControl.disable();
+        starsControl.clearValidators();
+        channelControl.disable();
+        channelControl.clearValidators();
+      }
+      starsControl.updateValueAndValidity();
+      channelControl.updateValueAndValidity();
+    });
   }
 
-  save(): void {
-    let valid = this.formService.check(this.form);
-    if (!valid) {
+  onSubmit(event: any): void {
+    event.preventDefault();
+    if (!this.form.valid) {
       return;
-    }
-    const values = this.form.getRawValue();
-    if (values.enabled) {
-      let error = false;
-      if (!values.channel) {
-        this.form.get('channel').setErrors({required: true});
-        error = true;
-      }
-      if (!values.minStars) {
-        this.form.get('channel').setErrors({required: true});
-        error = true;
-      }
-      if (error) {
-        return;
-      }
     }
     this.loading = true;
     this.service.putStarboard(this.guild.id, this.form.getRawValue()).subscribe(result => {

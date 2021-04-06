@@ -4,7 +4,7 @@
     <nz-tabset>
       <nz-tab nzTitle="Starboard">
         <nz-spin [nzSpinning]="loading">
-          <form [formGroup]="form" (ngSubmit)="save()" nz-form nzLayout="vertical">
+          <form [formGroup]="form" (ngSubmit)="onSubmit($event)" nz-form nzLayout="vertical">
             <shared-settings-boolean id="enabled" [formGroup]="form" name="Status"
                                      nzRequired></shared-settings-boolean>
             <shared-settings-slider id="minStars" [formGroup]="form" name="settings.starboard.count.name"

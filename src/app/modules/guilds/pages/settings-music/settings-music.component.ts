@@ -3,10 +3,10 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Guild} from "../../../../entities/guild";
 import {ActivatedRoute} from "@angular/router";
 import {DiscordService} from "../../../../services/discord.service";
-import {FormService} from "../../../../services/form.service";
 import {ServerSettingsService} from "../../services/server-settings.service";
 import {NzNotificationService} from "ng-zorro-antd/notification";
 import {NzSelectOptionInterface} from "ng-zorro-antd/select";
+import {skipWhile} from "rxjs/operators";
 
 @Component({
   selector: 'app-settings-music',
@@ -31,9 +31,13 @@ export class SettingsMusicComponent implements OnInit {
     }
   ];
 
-  constructor(private route: ActivatedRoute, private discord: DiscordService,
-              private formBuilder: FormBuilder, private formService: FormService,
-              private service: ServerSettingsService, private nzNotifications: NzNotificationService) {
+  constructor(
+    private route: ActivatedRoute,
+    private discord: DiscordService,
+    private formBuilder: FormBuilder,
+    private service: ServerSettingsService,
+    private nzNotifications: NzNotificationService
+  ) {
     this.form = this.formBuilder.group({
       logTracks: new FormControl(null, [
         Validators.required
@@ -50,12 +54,12 @@ export class SettingsMusicComponent implements OnInit {
     this.discord.getGuild(this.route.snapshot.paramMap.get('guild')).subscribe(guild => {
       this.guild = guild;
       this.service.fetchMusic(this.guild.id).subscribe(settings => {
-        this.form.reset(settings, {emitEvent: false});
+        this.form.reset(settings);
         this.loading = false;
       });
     });
     // Listen to changes
-    this.form.valueChanges.subscribe(() => {
+    this.form.valueChanges.pipe(skipWhile(() => this.loading)).subscribe(() => {
       if (!this.changesDetected) {
         this.changesDetected = true;
       }
@@ -86,7 +90,7 @@ export class SettingsMusicComponent implements OnInit {
     });
   }
 
-  onSubmit(event: any) {
+  onSubmit(event: any): void {
     event.preventDefault();
     if (!this.form.valid) {
       return;
