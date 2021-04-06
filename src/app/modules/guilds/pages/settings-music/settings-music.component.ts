@@ -6,6 +6,7 @@ import {DiscordService} from "../../../../services/discord.service";
 import {FormService} from "../../../../services/form.service";
 import {ServerSettingsService} from "../../services/server-settings.service";
 import {NzNotificationService} from "ng-zorro-antd/notification";
+import {NzSelectOptionInterface} from "ng-zorro-antd/select";
 
 @Component({
   selector: 'app-settings-music',
@@ -19,6 +20,16 @@ export class SettingsMusicComponent implements OnInit {
   loading: boolean = true;
 
   guild: Guild;
+  modes: NzSelectOptionInterface[] = [
+    {
+      label: 'Queue',
+      value: 'QUEUE'
+    },
+    {
+      label: 'PlayList',
+      value: 'PLAYLIST'
+    }
+  ];
 
   constructor(private route: ActivatedRoute, private discord: DiscordService,
               private formBuilder: FormBuilder, private formService: FormService,
@@ -26,6 +37,7 @@ export class SettingsMusicComponent implements OnInit {
     this.form = this.formBuilder.group({
       logTracks: ['', [Validators.required]],
       logChannel: [''],
+      mode: ['', Validators.required],
       activePlayList: ['']
     });
   }
@@ -49,9 +61,9 @@ export class SettingsMusicComponent implements OnInit {
     });
   }
 
-  save(): void {
-    let valid = this.formService.check(this.form);
-    if (!valid) {
+  onSubmit(event: any) {
+    event.preventDefault();
+    if (!this.form.valid) {
       return;
     }
     this.loading = true;

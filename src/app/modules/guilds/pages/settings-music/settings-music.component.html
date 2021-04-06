@@ -4,7 +4,7 @@
     <nz-tabset>
       <nz-tab nzTitle="Music">
         <nz-spin [nzSpinning]="loading">
-          <form nz-form nzLayout="vertical">
+          <form [formGroup]="form" (ngSubmit)="onSubmit($event)" nz-form nzLayout="vertical">
             <div nz-row nzGutter="16">
               <div nz-col nzSpan="12">
                 <shared-settings-boolean id="logTracks" name="Log tracks"
@@ -12,21 +12,40 @@
                                          [formGroup]="form"></shared-settings-boolean>
               </div>
               <div nz-col nzSpan="12">
-                <shared-settings-channel id="logChannel" name="Log channel"
-                                         [guild]="guild" [loading]="loading" [required]="false"
+                <shared-settings-channel id="logChannel" [guild]="guild" [loading]="loading"
+                                         [name]="'settings.music.channel.name' | translate"
+                                         [required]="this.form.get('logTracks').value === true"
                                          [disabled]="loading || !this.form.get('logTracks').value"
                                          [formGroup]="form"></shared-settings-channel>
               </div>
             </div>
-            <shared-select-playlist id="activePlayList" name="PlayList"
-                                    [required]="true" [disabled]="loading"
-                                    [formGroup]="form"></shared-select-playlist>
+            <!-- Mode and PlayList -->
+            <section>
+              <div class="settings-section-notes">
+                <nz-alert nzType="info"
+                          [nzMessage]="'settings.music.mode.description' | translate"
+                          nzShowIcon></nz-alert>
+              </div>
+              <div nzGutter="16" nz-row>
+                <div nzSpan="12" nz-col>
+                  <shared-settings-select id="mode" [required]="true" [disabled]="loading" [loading]="loading"
+                                          [name]="'settings.music.mode.name' | translate"
+                                          [formGroup]="form" [options]="modes"></shared-settings-select>
+                </div>
+                <div nzSpan="12" nz-col>
+                  <shared-select-playlist id="activePlayList" name="PlayList"
+                                          [required]="this.form.get('mode').value === 'PLAYLIST'"
+                                          [disabled]="this.form.get('mode').value === 'QUEUE'"
+                                          [formGroup]="form"></shared-select-playlist>
+                </div>
+              </div>
+            </section>
+            <div style="float:right">
+              <button type="submit" nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary">
+                {{ 'common.forms.save' | translate }}
+              </button>
+            </div>
           </form>
-          <div style="float:right">
-            <button nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary" (click)="save()">
-              Save Changes
-            </button>
-          </div>
         </nz-spin>
       </nz-tab>
     </nz-tabset>

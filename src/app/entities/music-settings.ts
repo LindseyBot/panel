@@ -5,5 +5,6 @@ export class MusicSettings {
   logChannel: string;
   activePlayList: string;
   position: number;
+  mode: string;
 
 }

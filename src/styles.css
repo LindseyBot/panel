@@ -7,3 +7,7 @@
 .fas {
   filter: invert(83%) sepia(0%) saturate(1016%) hue-rotate(219deg) brightness(98%) contrast(92%);
 }
+
+.settings-section-notes {
+  margin-bottom: 16px;
+}

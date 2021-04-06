@@ -21,10 +21,10 @@ import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzDividerModule} from "ng-zorro-antd/divider";
 import {SettingsChannelComponent} from './components/settings-channel/settings-channel.component';
 import {NzIconModule} from "ng-zorro-antd/icon";
-import { PlaylistTrackComponent } from './components/playlist-track/playlist-track.component';
+import {PlaylistTrackComponent} from './components/playlist-track/playlist-track.component';
 import {NzListModule} from "ng-zorro-antd/list";
-import { SettingsSelectPlaylistComponent } from './components/settings-select-playlist/settings-select-playlist.component';
-
+import {SettingsSelectPlaylistComponent} from './components/settings-select-playlist/settings-select-playlist.component';
+import {TranslatePipe} from './pipes/translate.pipe';
 
 @NgModule({
   declarations: [
@@ -36,37 +36,39 @@ import { SettingsSelectPlaylistComponent } from './components/settings-select-pl
     ModalUserReferenceComponent,
     SettingsChannelComponent,
     PlaylistTrackComponent,
-    SettingsSelectPlaylistComponent
+    SettingsSelectPlaylistComponent,
+    TranslatePipe,
   ],
-    exports: [
-        SettingsSmallTextComponent,
-        SettingsBooleanComponent,
-        SettingsSliderComponent,
-        SettingsSelectComponent,
-        SettingsBigTextComponent,
-        SettingsChannelComponent,
-        PlaylistTrackComponent,
-        SettingsSelectPlaylistComponent,
-    ],
-    imports: [
-        CommonModule,
-        NzGridModule,
-        NzFormModule,
-        NzInputModule,
-        NzSelectModule,
-        NzSwitchModule,
-        NzSliderModule,
-        NzAlertModule,
-        ReactiveFormsModule,
-        NzSkeletonModule,
-        NzSpaceModule,
-        NzButtonModule,
-        FormsModule,
-        NzModalModule,
-        NzDividerModule,
-        NzIconModule,
-        NzListModule
-    ]
+  exports: [
+    SettingsSmallTextComponent,
+    SettingsBooleanComponent,
+    SettingsSliderComponent,
+    SettingsSelectComponent,
+    SettingsBigTextComponent,
+    SettingsChannelComponent,
+    PlaylistTrackComponent,
+    SettingsSelectPlaylistComponent,
+    TranslatePipe,
+  ],
+  imports: [
+    CommonModule,
+    NzGridModule,
+    NzFormModule,
+    NzInputModule,
+    NzSelectModule,
+    NzSwitchModule,
+    NzSliderModule,
+    NzAlertModule,
+    ReactiveFormsModule,
+    NzSkeletonModule,
+    NzSpaceModule,
+    NzButtonModule,
+    FormsModule,
+    NzModalModule,
+    NzDividerModule,
+    NzIconModule,
+    NzListModule
+  ]
 })
 export class SharedModule {
 }
