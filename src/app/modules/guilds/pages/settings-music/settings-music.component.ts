@@ -7,6 +7,7 @@ import {FormService} from "../../../../services/form.service";
 import {ServerSettingsService} from "../../services/server-settings.service";
 import {NzNotificationService} from "ng-zorro-antd/notification";
 import {NzSelectOptionInterface} from "ng-zorro-antd/select";
+import {skip} from "rxjs/operators";
 
 @Component({
   selector: 'app-settings-music',
@@ -46,17 +47,14 @@ export class SettingsMusicComponent implements OnInit {
     this.discord.getGuild(this.route.snapshot.paramMap.get('guild')).subscribe(guild => {
       this.guild = guild;
       this.service.fetchMusic(this.guild.id).subscribe(settings => {
-        this.form.reset(settings);
+        this.form.reset(settings, {emitEvent: false});
         this.loading = false;
       });
     });
     // Listen to changes
-    this.form.valueChanges.subscribe(() => {
-      if (this.loading) {
-        return;
-      }
+    this.form.valueChanges.pipe(skip(2)).subscribe(() => {
       if (!this.changesDetected) {
-        this.changesDetected = true;
+        setTimeout(() => this.changesDetected = true, 0);
       }
     });
   }

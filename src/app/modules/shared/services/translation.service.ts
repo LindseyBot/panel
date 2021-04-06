@@ -28,13 +28,10 @@ export class TranslationService {
 
   translate(key: string, args: any[]): string {
     if (this.dictionary[this.language] != null) {
-      let template;
-      try {
-        template = key.split('.').reduce((o, i) => o[i], this.dictionary[this.language].values);
-      } catch (e) {
+      let template = this.dictionary[this.language].values[key];
+      if (!template) {
         return key;
-      }
-      if (args.length == 0) {
+      } else if (args.length == 0) {
         return template;
       }
       for (let i = 0; i < args.length; i++) {
