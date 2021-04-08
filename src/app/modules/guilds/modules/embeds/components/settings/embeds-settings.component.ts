@@ -1,25 +1,25 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {Guild} from "../../../../entities/guild";
+import {Guild} from "../../../../../../entities/guild";
 import {ActivatedRoute} from "@angular/router";
-import {DiscordService} from "../../../../services/discord.service";
-import {FormService} from "../../../../services/form.service";
-import {ServerSettingsService} from "../../services/server-settings.service";
+import {DiscordService} from "../../../../../../services/discord.service";
+import {FormService} from "../../../../../../services/form.service";
+import {ServerSettingsService} from "../../../../services/server-settings.service";
 import {NzNotificationService} from "ng-zorro-antd/notification";
+import {skipWhile} from "rxjs/operators";
 
 @Component({
-  selector: 'app-settings-embeds',
-  templateUrl: './settings-embeds.component.html',
-  styleUrls: ['./settings-embeds.component.css']
+  selector: 'guilds-settings-embeds',
+  templateUrl: './embeds-settings.component.html',
+  styleUrls: ['./embeds-settings.component.css']
 })
-export class SettingsEmbedsComponent implements OnInit {
+export class EmbedsSettingsComponent implements OnInit {
 
   form: FormGroup;
   changesDetected: boolean = false;
   loading: boolean = true;
 
   guild: Guild;
-  isEnabled = false;
 
   constructor(private route: ActivatedRoute, private discord: DiscordService,
               private formBuilder: FormBuilder, private formService: FormService,
@@ -37,25 +37,21 @@ export class SettingsEmbedsComponent implements OnInit {
     this.discord.getGuild(this.route.snapshot.paramMap.get('guild')).subscribe(guild => {
       this.guild = guild;
       this.service.fetchEmbeds(guild.id).subscribe(settings => {
-        this.form.patchValue(settings);
-        this.changesDetected = false;
+        this.form.reset(settings);
         this.loading = false;
       });
     });
     // Listen to changes
-    this.form.valueChanges.subscribe(() => {
-      if (this.loading) {
-        return;
-      }
+    this.form.valueChanges.pipe(skipWhile(() => this.loading)).subscribe(() => {
       if (!this.changesDetected) {
         this.changesDetected = true;
       }
     });
   }
 
-  save(): void {
-    let valid = this.formService.check(this.form);
-    if (!valid) {
+  onSubmit(event: any): void {
+    event.preventDefault();
+    if (!this.form.valid) {
       return;
     }
     this.loading = true;

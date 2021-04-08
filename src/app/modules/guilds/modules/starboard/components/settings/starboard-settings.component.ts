@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Guild} from "../../../../entities/guild";
+import {Guild} from "../../../../../../entities/guild";
 import {ActivatedRoute} from "@angular/router";
-import {DiscordService} from "../../../../services/discord.service";
-import {ServerSettingsService} from "../../services/server-settings.service";
+import {DiscordService} from "../../../../../../services/discord.service";
+import {ServerSettingsService} from "../../../../services/server-settings.service";
 import {NzNotificationService} from "ng-zorro-antd/notification";
 import {skipWhile} from "rxjs/operators";
 
 @Component({
   selector: 'app-settings-starboard',
-  templateUrl: './settings-starboard.component.html',
-  styleUrls: ['./settings-starboard.component.css']
+  templateUrl: './starboard-settings.component.html',
+  styleUrls: ['./starboard-settings.component.css']
 })
-export class SettingsStarboardComponent implements OnInit {
+export class StarboardSettingsComponent implements OnInit {
 
   form: FormGroup;
   changesDetected: boolean = false;

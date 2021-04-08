@@ -1,0 +1,88 @@
+<nz-row>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="16" nzXs="24">
+    <nz-tabset>
+      <nz-tab nzTitle="Better Embeds">
+        <nz-spin [nzSpinning]="loading">
+          <form [formGroup]="form" (ngSubmit)="onSubmit($event)" nz-form nzLayout="vertical">
+            <div class="settings-section-notes">
+              <nz-alert nzType="info"
+                        [nzMessage]="'settings.embeds.description' | translate"
+                        nzShowIcon></nz-alert>
+            </div>
+            <!-- Line 1 -->
+            <section>
+              <div nzGutter="16" nz-row>
+                <div nzSpan="12" nz-col>
+                  <shared-settings-boolean id="apoiase" name="apoia.se" [formGroup]="form"
+                                           [rawNotes]="apoiase">
+                    <ng-template #apoiase>
+                      <p class="notes-settings">
+                        <a href="https://apoia.se/" target="_blank">apoia.se</a> is a brazilian crowdfunding website.
+                      </p>
+                    </ng-template>
+                  </shared-settings-boolean>
+                </div>
+                <div nzSpan="12" nz-col>
+                  <shared-settings-boolean id="catarse" name="catarse.me" [formGroup]="form"
+                                           [rawNotes]="catarse">
+                    <ng-template #catarse>
+                      <p class="notes-settings">
+                        <a href="https://catarse.me/" target="_blank">catarse.me</a> is a brazilian crowdfunding
+                        website.
+                      </p>
+                    </ng-template>
+                  </shared-settings-boolean>
+                </div>
+              </div>
+            </section>
+            <!-- Line 2 -->
+            <section>
+              <div nzGutter="16" nz-row>
+                <div nzSpan="12" nz-col>
+                  <shared-settings-boolean id="kitsu" name="kitsu.io" [formGroup]="form"
+                                           [rawNotes]="kitsu">
+                    <ng-template #kitsu>
+                      <p class="notes-settings">
+                        <a href="https://kitsu.io/" target="_blank">kitsu.io</a> is an anime database and social
+                        network.
+                      </p>
+                    </ng-template>
+                  </shared-settings-boolean>
+                </div>
+                <div nzSpan="12" nz-col>
+                  <shared-settings-boolean id="myAnimeList" name="myanimelist.net" [formGroup]="form"
+                                           [rawNotes]="mal">
+                    <ng-template #mal>
+                      <p class="notes-settings">
+                        <a href="https://myanimelist.net/" target="_blank">myanimelist.net</a> is an anime database and
+                        tracking website.
+                      </p>
+                    </ng-template>
+                  </shared-settings-boolean>
+                </div>
+              </div>
+            </section>
+            <!-- Line 3 -->
+            <section>
+              <shared-settings-boolean id="picarto" name="picarto.tv" [formGroup]="form"
+                                       [rawNotes]="picarto">
+                <ng-template #picarto>
+                  <p class="notes-settings">
+                    <a href="https://picarto.tv/" target="_blank">picarto.tv</a> is an art streaming website.
+                  </p>
+                </ng-template>
+              </shared-settings-boolean>
+            </section>
+            <div style="float:right">
+              <button type="submit" nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary">
+                {{'common.forms.save' | translate}}
+              </button>
+            </div>
+          </form>
+        </nz-spin>
+      </nz-tab>
+    </nz-tabset>
+  </nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+</nz-row>

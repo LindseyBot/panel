@@ -17,5 +17,6 @@
   "settings.starboard.count.description": "The minimum amount of stars required on a message for it to be posted on the starboard.",
   "settings.starboard.channel.name": "Starboard Channel",
   "settings.starboard.channel.description": "The (text) channel where messages who have the minimum amount of stars are reposted to.",
-  "settings.starboard.channel.required": "A channel is required when this feature is enabled."
+  "settings.starboard.channel.required": "A channel is required when this feature is enabled.",
+  "settings.embeds.description": "When enabled, links to the following websites will be deleted and replaced by a rich embed with more information."
 }

@@ -1,19 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Guild} from "../../../../entities/guild";
+import {Guild} from "../../../../../../entities/guild";
 import {ActivatedRoute} from "@angular/router";
-import {DiscordService} from "../../../../services/discord.service";
-import {ServerSettingsService} from "../../services/server-settings.service";
+import {DiscordService} from "../../../../../../services/discord.service";
+import {ServerSettingsService} from "../../../../services/server-settings.service";
 import {NzNotificationService} from "ng-zorro-antd/notification";
 import {NzSelectOptionInterface} from "ng-zorro-antd/select";
 import {skipWhile} from "rxjs/operators";
 
 @Component({
   selector: 'app-settings-music',
-  templateUrl: './settings-music.component.html',
-  styleUrls: ['./settings-music.component.css']
+  templateUrl: './music-settings.component.html',
+  styleUrls: ['./music-settings.component.css']
 })
-export class SettingsMusicComponent implements OnInit {
+export class MusicSettingsComponent implements OnInit {
 
   form: FormGroup;
   changesDetected: boolean = false;

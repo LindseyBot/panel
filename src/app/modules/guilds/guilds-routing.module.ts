@@ -7,9 +7,6 @@ import {GuildSelectedGuard} from "../../services/guards/guild-selected.guard";
 import {SettingsAutomodComponent} from "./pages/settings-automod/settings-automod.component";
 import {SettingsLoggingComponent} from "./pages/settings-logging/settings-logging.component";
 import {SettingsAccessControlComponent} from "./pages/settings-access-control/settings-access-control.component";
-import {SettingsMusicComponent} from "./pages/settings-music/settings-music.component";
-import {SettingsStarboardComponent} from "./pages/settings-starboard/settings-starboard.component";
-import {SettingsEmbedsComponent} from "./pages/settings-embeds/settings-embeds.component";
 
 const routes: Routes = [
   {
@@ -34,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: ':guild/starboard',
-    component: SettingsStarboardComponent,
+    loadChildren: () => import('./modules/starboard/starboard.module').then(m => m.StarboardModule),
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
@@ -44,12 +41,12 @@ const routes: Routes = [
   },
   {
     path: ':guild/embeds',
-    component: SettingsEmbedsComponent,
+    loadChildren: () => import('./modules/embeds/embeds.module').then(m => m.EmbedsModule),
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
     path: ':guild/music',
-    component: SettingsMusicComponent,
+    loadChildren: () => import('./modules/music/music.module').then(m => m.MusicModule),
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
