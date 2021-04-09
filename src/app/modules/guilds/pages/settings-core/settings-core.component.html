@@ -4,30 +4,38 @@
     <nz-tabset>
       <nz-tab nzTitle="Settings">
         <nz-spin [nzSpinning]="loading">
-          <form nz-form nzLayout="vertical">
-            <shared-settings-small-text id="prefix" [formGroup]="form" name="settings.core.prefix.name"
-                                        [nzRequired]="false" [nzErrorTip]="prefixError" placeholder="L!">
-              <ng-template #prefixError let-control>
-                <ng-container *ngIf="control.hasError('maxlength')">
-                  Prefix must be up to 8 characters only.
-                </ng-container>
-                <ng-container *ngIf="control.hasError('pattern')">
-                  Invalid prefix.
-                </ng-container>
-              </ng-template>
-            </shared-settings-small-text>
-            <shared-settings-select id="language" [formGroup]="form" name="settings.core.language.name"
-                                    [loading]="loading" [options]="this.languages"></shared-settings-select>
-            <shared-settings-boolean id="keepRolesEnabled" [formGroup]="form" name="settings.core.keepRoles.name"
-                                     notes="settings.core.keepRoles.description"></shared-settings-boolean>
-            <shared-settings-boolean id="modLogEnabled" [formGroup]="form" name="settings.core.modLog.name"
-                                     notes="settings.core.modLog.description"></shared-settings-boolean>
+          <form [formGroup]="form" (ngSubmit)="onSubmit($event)" nz-form nzLayout="vertical">
+            <!-- Line 1 -->
+            <section>
+              <div nzGutter="16" nz-row>
+                <div nzSpan="12" nz-col>
+                  <shared-settings-small-text id="prefix" [formGroup]="form" name="settings.core.prefix.name"
+                                              [nzRequired]="false" [nzErrorTip]="prefixError" placeholder="L!">
+                    <ng-template #prefixError let-control>
+                      <ng-container *ngIf="control.hasError('maxlength')">
+                        Prefix must be up to 8 characters only.
+                      </ng-container>
+                      <ng-container *ngIf="control.hasError('pattern')">
+                        Invalid prefix.
+                      </ng-container>
+                    </ng-template>
+                  </shared-settings-small-text>
+                </div>
+                <div nzSpan="12" nz-col>
+                  <shared-settings-select id="language" [formGroup]="form" name="settings.core.language.name"
+                                          [loading]="loading" [options]="this.languages"></shared-settings-select>
+                </div>
+              </div>
+            </section>
+            <shared-settings-channel id="ignoredChannels" [formGroup]="form" name="settings.core.ignoredChannels.name"
+                                     notes="settings.core.ignoredChannels.description"
+                                     [nzRequired]="false" [guild]="guild" mode="multiple"></shared-settings-channel>
+            <div style="float:right">
+              <button type="submit" nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary">
+                {{'common.forms.save' | translate}}
+              </button>
+            </div>
           </form>
-          <div style="float:right">
-            <button nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary" (click)="save()">
-              Save Changes
-            </button>
-          </div>
         </nz-spin>
       </nz-tab>
     </nz-tabset>

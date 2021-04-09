@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {FormService} from "../../../../services/form.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {NzSelectOptionInterface} from "ng-zorro-antd/select";
 import {ActivatedRoute} from "@angular/router";
 import {Guild} from "../../../../entities/guild";
@@ -30,14 +29,20 @@ export class SettingsCoreComponent implements OnInit {
     }
   ];
 
-  constructor(private route: ActivatedRoute, private discord: DiscordService,
-              private formBuilder: FormBuilder, private formService: FormService,
-              private service: ServerSettingsService, private nzNotifications: NzNotificationService) {
+  constructor(private route: ActivatedRoute,
+              private discord: DiscordService,
+              private formBuilder: FormBuilder,
+              private service: ServerSettingsService,
+              private nzNotifications: NzNotificationService) {
     this.form = this.formBuilder.group({
-      prefix: ['', [Validators.maxLength(8), Validators.pattern('[^\\s]*')]],
-      language: ['', [Validators.required]],
-      keepRolesEnabled: ['', [Validators.required]],
-      modLogEnabled: ['', [Validators.required]]
+      prefix: new FormControl(null, [
+        Validators.maxLength(8),
+        Validators.pattern('[^\\s]*')
+      ]),
+      language: new FormControl(null, [
+        Validators.required
+      ]),
+      ignoredChannels: new FormControl(null, [])
     });
   }
 
@@ -45,7 +50,8 @@ export class SettingsCoreComponent implements OnInit {
     this.discord.getGuild(this.route.snapshot.paramMap.get('guild')).subscribe(guild => {
       this.guild = guild;
       this.service.fetchSettings(guild.id).subscribe(profile => {
-        this.form.patchValue(profile);
+        profile.language = profile.language['id']; // needs to be just the id
+        this.form.reset(profile);
         this.changesDetected = false;
         this.loading = false;
       });
@@ -61,13 +67,14 @@ export class SettingsCoreComponent implements OnInit {
     });
   }
 
-  save(): void {
-    let valid = this.formService.check(this.form);
-    if (!valid) {
+  onSubmit(event: any): void {
+    event.preventDefault();
+    if (!this.form.valid) {
       return;
     }
     this.loading = true;
     this.service.putSettings(this.guild.id, this.form.getRawValue()).subscribe(result => {
+      result.language = result.language['id']; // needs to be just the id
       this.form.reset(result);
       this.changesDetected = false;
       this.nzNotifications.success('SUCCESS', 'Settings saved successfully', {

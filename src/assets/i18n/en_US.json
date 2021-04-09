@@ -18,5 +18,7 @@
   "settings.starboard.channel.name": "Starboard Channel",
   "settings.starboard.channel.description": "The (text) channel where messages who have the minimum amount of stars are reposted to.",
   "settings.starboard.channel.required": "A channel is required when this feature is enabled.",
-  "settings.embeds.description": "When enabled, links to the following websites will be deleted and replaced by a rich embed with more information."
+  "settings.embeds.description": "When enabled, links to the following websites will be deleted and replaced by a rich embed with more information.",
+  "settings.core.ignoredChannels.name": "Ignored Channels",
+  "settings.core.ignoredChannels.description": "Lindsey will ignore all commands sent on these channels."
 }

@@ -3,7 +3,7 @@
   <nz-alert nzType="info" [nzMessage]="notes | translate" [hidden]="!notes" nzShowIcon></nz-alert>
   <br [hidden]="!notes"/>
   <nz-form-control nzHasFeedback nzValidatingTip="Checking..." [nzErrorTip]="nzErrorTip">
-    <nz-select formControlName="{{id}}" [nzCustomTemplate]="defaultTemplate" nzPlaceHolder="None"
+    <nz-select formControlName="{{id}}" [nzCustomTemplate]="defaultTemplate" nzPlaceHolder="None" [nzMode]="mode"
                [nzLoading]="!this.guild" nzShowSearch>
       <span *ngFor="let channel of guild.channels">
         <nz-option [nzLabel]="channel.type + ' ' + channel.name" [nzValue]="channel.id"
@@ -25,9 +25,11 @@
       </span>
     </nz-select>
     <ng-template #defaultTemplate let-selected>
-      <i nz-icon nzType="borderless-table" [hidden]="selected.nzLabel.split(' ')[0] === 'VOICE'"></i>
-      <i nz-icon nzType="customer-service" [hidden]="selected.nzLabel.split(' ')[0] === 'TEXT'"></i>
-      {{ selected.nzLabel.split(' ')[1] }}
+      <i nz-icon nzType="borderless-table" [ngClass]="{'multi-icon': mode === 'multiple'}"
+         [hidden]="selected.nzLabel.split(' ')[0] === 'VOICE'"></i>
+      <i nz-icon nzType="customer-service" [ngClass]="{'multi-icon': mode === 'multiple'}"
+         [hidden]="selected.nzLabel.split(' ')[0] === 'TEXT'"></i>
+      <span class="selected-text">{{ selected.nzLabel.split(' ')[1] }}</span>
     </ng-template>
   </nz-form-control>
 </nz-form-item>
