@@ -7,6 +7,8 @@ import {ServerProfile} from "../../../entities/server-profile";
 import {MusicSettings} from "../../../entities/music-settings";
 import {StarboardSettings} from "../../../entities/starboard-settings";
 import {EmbedSettings} from "../../../entities/embed-settings";
+import {Antiad} from "../../../entities/antiad";
+import {Automod} from "../../../entities/automod";
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +55,26 @@ export class ServerSettingsService {
 
   putEmbeds(guild: string, settings: EmbedSettings): Observable<EmbedSettings> {
     return this.http.put<EmbedSettings>(environment.API_URL + '/guilds/' + guild + '/embeds', settings,
+      {headers: this.authService.getHeaders()});
+  }
+
+  fetchAntiAd(guild: string): Observable<Antiad> {
+    return this.http.get<Antiad>(environment.API_URL + '/guilds/' + guild + '/antiad',
+      {headers: this.authService.getHeaders()});
+  }
+
+  putAntiAd(guild: string, settings: Antiad): Observable<Antiad> {
+    return this.http.put<Antiad>(environment.API_URL + '/guilds/' + guild + '/antiad', settings,
+      {headers: this.authService.getHeaders()});
+  }
+
+  fetchAutomod(guild: string): Observable<Automod> {
+    return this.http.get<Automod>(environment.API_URL + '/guilds/' + guild + '/automod',
+      {headers: this.authService.getHeaders()});
+  }
+
+  putAutomod(guild: string, settings: Automod): Observable<Automod> {
+    return this.http.put<Automod>(environment.API_URL + '/guilds/' + guild + '/automod', settings,
       {headers: this.authService.getHeaders()});
   }
 

@@ -1,0 +1,30 @@
+<nz-spin [nzSpinning]="loading">
+  <form [formGroup]="form" (ngSubmit)="onSubmit($event)" nz-form nzLayout="vertical">
+    <!-- Line 1 -->
+    <section>
+      <shared-settings-boolean id="enabled" [name]="'settings.automod.antiad.name' | translate" [formGroup]="form"
+                               [notes]="'settings.automod.antiad.description' | translate">
+      </shared-settings-boolean>
+    </section>
+    <!-- Line 2 -->
+    <section>
+      <shared-settings-slider [formGroup]="form" id="strikes" [name]="'settings.automod.strikes.name' | translate"
+                              nzErrorTip="#strikesError"
+                              max="10" min="1" [notes]="'settings.automod.strikes.description' | translate">
+        <ng-template #strikesError let-control>
+          <ng-container *ngIf="control.hasError('max')">
+            {{'settings.automod.strikes.too_high' | translate}}
+          </ng-container>
+          <ng-container *ngIf="control.hasError('min')">
+            {{'settings.automod.strikes.too_low' | translate}}
+          </ng-container>
+        </ng-template>
+      </shared-settings-slider>
+    </section>
+    <div style="float:right">
+      <button type="submit" nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary">
+        {{'common.forms.save' | translate}}
+      </button>
+    </div>
+  </form>
+</nz-spin>

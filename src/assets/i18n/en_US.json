@@ -20,5 +20,16 @@
   "settings.starboard.channel.required": "A channel is required when this feature is enabled.",
   "settings.embeds.description": "When enabled, links to the following websites will be deleted and replaced by a rich embed with more information.",
   "settings.core.ignoredChannels.name": "Ignored Channels",
-  "settings.core.ignoredChannels.description": "Lindsey will ignore all commands sent on these channels."
+  "settings.core.ignoredChannels.description": "Lindsey will ignore all commands sent on these channels.",
+  "settings.automod.description": "AutoMod will automatically monitor, strike and punish users who violate server rules.",
+  "settings.automod.antiad.name": "Anti-Advertising",
+  "settings.automod.antiad.description": "When enabled, any server advertising will result in a set amount of strikes.",
+  "settings.automod.strikes.name": "Strikes",
+  "settings.automod.strikes.description": "How many strikes should a user receive for each violation.",
+  "settings.automod.strikes.too_low": "Strikes too low (minimum 1).",
+  "settings.automod.strikes.too_high": "Strikes exceeds limit (10).",
+  "settings.automod.mute.name": "Mute Members",
+  "settings.automod.mute.description": "Automatically mutes members for an increasing number of hours starting at 2 strikes.",
+  "settings.automod.ban.name": "Ban Members",
+  "settings.automod.ban.description": "Automatically bans members when their strike count reaches 10."
 }

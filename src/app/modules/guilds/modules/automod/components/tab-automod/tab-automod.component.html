@@ -1,0 +1,25 @@
+<nz-spin [nzSpinning]="loading">
+  <form [formGroup]="form" (ngSubmit)="onSubmit($event)" nz-form nzLayout="vertical">
+    <div class="settings-section-notes">
+      <p>{{'settings.automod.description' | translate}}</p>
+    </div>
+    <!-- Line 1 -->
+    <!-- No this is not ready yet -->
+    <section hidden>
+      <shared-settings-boolean id="muteEnabled" [name]="'settings.automod.mute.name' | translate" [formGroup]="form"
+                               [notes]="'settings.automod.mute.description' | translate">
+      </shared-settings-boolean>
+    </section>
+    <!-- Line 2 -->
+    <section>
+      <shared-settings-boolean id="banEnabled" [name]="'settings.automod.ban.name' | translate" [formGroup]="form"
+                               [notes]="'settings.automod.ban.description' | translate">
+      </shared-settings-boolean>
+    </section>
+    <div style="float:right">
+      <button type="submit" nz-button [disabled]="!changesDetected" [nzLoading]="loading" nzType="primary">
+        {{'common.forms.save' | translate}}
+      </button>
+    </div>
+  </form>
+</nz-spin>

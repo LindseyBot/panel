@@ -4,7 +4,6 @@ import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {LoggedInGuard} from "../../services/guards/logged-in.guard";
 import {SettingsCoreComponent} from "./pages/settings-core/settings-core.component";
 import {GuildSelectedGuard} from "../../services/guards/guild-selected.guard";
-import {SettingsAutomodComponent} from "./pages/settings-automod/settings-automod.component";
 import {SettingsLoggingComponent} from "./pages/settings-logging/settings-logging.component";
 import {SettingsAccessControlComponent} from "./pages/settings-access-control/settings-access-control.component";
 
@@ -36,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: ':guild/automod',
-    component: SettingsAutomodComponent,
+    loadChildren: () => import('./modules/automod/automod.module').then(m => m.AutomodModule),
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
