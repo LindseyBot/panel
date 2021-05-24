@@ -4,7 +4,6 @@ import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {LoggedInGuard} from "../../services/guards/logged-in.guard";
 import {SettingsCoreComponent} from "./pages/settings-core/settings-core.component";
 import {GuildSelectedGuard} from "../../services/guards/guild-selected.guard";
-import {SettingsLoggingComponent} from "./pages/settings-logging/settings-logging.component";
 import {SettingsAccessControlComponent} from "./pages/settings-access-control/settings-access-control.component";
 
 const routes: Routes = [
@@ -49,8 +48,8 @@ const routes: Routes = [
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {
-    path: ':guild/settings/log',
-    component: SettingsLoggingComponent,
+    path: ':guild/logs',
+    loadChildren: () => import('./modules/logs/logs.module').then(m => m.LogsModule),
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   }
 ];

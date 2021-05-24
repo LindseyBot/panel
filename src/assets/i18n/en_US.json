@@ -31,5 +31,6 @@
   "settings.automod.mute.name": "Mute Members",
   "settings.automod.mute.description": "Automatically mutes members for an increasing number of hours starting at 2 strikes.",
   "settings.automod.ban.name": "Ban Members",
-  "settings.automod.ban.description": "Automatically bans members when their strike count reaches 10."
+  "settings.automod.ban.description": "Automatically bans members when their strike count reaches 10.",
+  "settings.logs.description": "This table shows all recent log events related to this server, times are in your local timezone. You can hover over names to view the corresponding id."
 }

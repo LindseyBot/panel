@@ -1,0 +1,49 @@
+<nz-row>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="16" nzXs="24">
+    <nz-tabset>
+      <nz-tab nzTitle="Logs">
+        <div class="settings-section-notes">
+          <nz-alert nzType="info"
+                    [nzMessage]="'settings.logs.description' | translate"
+                    nzShowIcon></nz-alert>
+        </div>
+        <nz-table #basicTable [nzData]="data"
+                  [nzLoading]="loading" [nzFrontPagination]="false"
+                  [nzPageIndex]="page" [nzPageSize]="size"
+                  [nzScroll]="{ x: 'auto' }" nzHideOnSinglePage
+                  [nzTotal]="total" nzSize="small" nzBordered>
+          <thead>
+          <tr>
+            <th nzWidth="132px">Date</th>
+            <th nzWidth="64px">Level</th>
+            <th nzWidth="192px">User</th>
+            <th nzWidth="192px">Channel</th>
+            <th>Message</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of this.data">
+            <td>
+              <span nz-tooltip [nzTooltipTitle]="data.timestamp">{{toLocalTime(data.timestamp)}}</span>
+            </td>
+            <td>
+              {{data.level}}
+            </td>
+            <td>
+              <span nz-tooltip [nzTooltipTitle]="data.user.id">{{data.user.name}}</span>
+            </td>
+            <td>
+              <span nz-tooltip [nzTooltipTitle]="data.channel.id">{{data.channel.name}}</span>
+            </td>
+            <td>
+              {{data.message}}
+            </td>
+          </tr>
+          </tbody>
+        </nz-table>
+      </nz-tab>
+    </nz-tabset>
+  </nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+</nz-row>
