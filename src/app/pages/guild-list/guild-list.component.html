@@ -3,7 +3,8 @@
   <nz-col nzMd="12" nzXs="24">
     <nz-alert [nzMessage]="msg" nzType="info" nzShowIcon>
       <ng-template #msg>
-        Not seeing your server below? <a routerLink="/invite">Add Lindsey here first</a> then try <a routerLink="/auth/logout">logging out</a> and back in again.
+        Not seeing your server below? <a routerLink="/invite">Add Lindsey here first</a> then try <a
+        routerLink="/auth/logout">logging out</a> and back in again.
       </ng-template>
     </nz-alert>
     <br/>
@@ -19,7 +20,8 @@
       <tbody>
       <tr *ngFor="let data of table.data" class="clickable" (click)="select(data.id)">
         <td>
-          <img class="guild-icon" [src]="data.iconUrl" alt="guild-icon">
+          <img class="guild-icon" src="https://cdn.discordapp.com/icons/{{data.id}}/{{data.iconHash}}.webp"
+               alt="guild-icon">
         </td>
         <td>
           {{data.name}}

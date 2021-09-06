@@ -17,52 +17,33 @@
       <div class="app-header">
         <div [ngClass]="{'left-header-small': isCollapsed, 'left-header-big': !isCollapsed}">
           <nz-space>
-            <nz-space-item>
-              <a routerLink="/" class="clickable-link">
-                <i nz-icon nzType="book"></i>
-                <span [hidden]="isCollapsed"> Documentation</span>
-              </a>
-            </nz-space-item>
-            <nz-space-item>
-              <nz-divider nzType="vertical"></nz-divider>
-            </nz-space-item>
-            <nz-space-item>
-              <a routerLink="/playlists" class="clickable-link">
-                <i nz-icon nzType="customer-service"></i>
-                <span [hidden]="isCollapsed"> PlayLists</span>
-              </a>
-            </nz-space-item>
-            <nz-space-item>
-              <nz-divider nzType="vertical"></nz-divider>
-            </nz-space-item>
-            <nz-space-item>
-              <a routerLink="/leaderboards" class="clickable-link">
-                <i nz-icon nzType="line-chart"></i>
-                <span [hidden]="isCollapsed"> Leaderboards</span>
-              </a>
-            </nz-space-item>
+            <a routerLink="/" class="clickable-link">
+              <i nz-icon nzType="book"></i>
+              <span [hidden]="isCollapsed"> Documentation</span>
+            </a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a routerLink="/leaderboards" class="clickable-link">
+              <i nz-icon nzType="line-chart"></i>
+              <span [hidden]="isCollapsed"> Leaderboards</span>
+            </a>
           </nz-space>
         </div>
         <div class="right-header">
           <nz-space>
-            <nz-space-item>
-              <a (click)="toggleTheme()">
-                <i class="theme-switcher" nz-icon nzType="bulb" nzTheme="fill"></i>
-              </a>
-            </nz-space-item>
-            <nz-space-item>
-              <nz-divider nzType="vertical"></nz-divider>
-            </nz-space-item>
-            <nz-space-item *ngIf="user">
+            <a (click)="toggleTheme()">
+              <i class="theme-switcher" nz-icon nzType="bulb" nzTheme="fill"></i>
+            </a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <div *ngIf="user">
               <button [hidden]="isCollapsed" nz-button routerLink="/selector">Control Panel</button>
               <button [hidden]="!isCollapsed" nz-button routerLink="/selector">
                 <i nz-icon nzType="dashboard"></i>
               </button>
-            </nz-space-item>
-            <nz-space-item *ngIf="user">
+            </div>
+            <div *ngIf="user">
               <nz-divider nzType="vertical"></nz-divider>
-            </nz-space-item>
-            <nz-space-item *ngIf="user">
+            </div>
+            <div *ngIf="user">
               <nz-button-group>
                 <button [hidden]="isCollapsed" nz-button>{{user.username}}#{{user.discriminator}}</button>
                 <button nz-button nz-dropdown [nzDropdownMenu]="userMenu" nzPlacement="bottomRight">
@@ -75,10 +56,10 @@
                   <li nz-menu-item nzDanger routerLink="/auth/logout">Logout</li>
                 </ul>
               </nz-dropdown-menu>
-            </nz-space-item>
-            <nz-space-item *ngIf="!user">
+            </div>
+            <div *ngIf="!user">
               <button nz-button routerLink="/auth/login">Log in</button>
-            </nz-space-item>
+            </div>
           </nz-space>
         </div>
       </div>

@@ -21,7 +21,6 @@ import {NzModalModule} from 'ng-zorro-antd/modal';
 import {NzDividerModule} from 'ng-zorro-antd/divider';
 import {SettingsChannelComponent} from './components/settings-channel/settings-channel.component';
 import {NzIconModule} from 'ng-zorro-antd/icon';
-import {PlaylistTrackComponent} from './components/playlist-track/playlist-track.component';
 import {NzListModule} from 'ng-zorro-antd/list';
 import {TranslatePipe} from './pipes/translate.pipe';
 
@@ -34,7 +33,6 @@ import {TranslatePipe} from './pipes/translate.pipe';
     SettingsBigTextComponent,
     ModalUserReferenceComponent,
     SettingsChannelComponent,
-    PlaylistTrackComponent,
     TranslatePipe,
   ],
   exports: [
@@ -44,7 +42,6 @@ import {TranslatePipe} from './pipes/translate.pipe';
     SettingsSelectComponent,
     SettingsBigTextComponent,
     SettingsChannelComponent,
-    PlaylistTrackComponent,
     TranslatePipe,
   ],
   imports: [

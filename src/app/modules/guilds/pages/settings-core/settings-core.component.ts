@@ -8,15 +8,15 @@ import {ServerSettingsService} from '../../services/server-settings.service';
 import {NzNotificationService} from 'ng-zorro-antd/notification';
 
 @Component({
-  selector: 'settings-core',
+  selector: 'app-settings-core',
   templateUrl: './settings-core.component.html',
   styleUrls: ['./settings-core.component.css']
 })
 export class SettingsCoreComponent implements OnInit {
 
   form: FormGroup;
-  changesDetected: boolean = false;
-  loading: boolean = true;
+  changesDetected = false;
+  loading = true;
 
   guild: Guild;
 
@@ -35,10 +35,6 @@ export class SettingsCoreComponent implements OnInit {
               private service: ServerSettingsService,
               private nzNotifications: NzNotificationService) {
     this.form = this.formBuilder.group({
-      prefix: new FormControl(null, [
-        Validators.maxLength(8),
-        Validators.pattern('[^\\s]*')
-      ]),
       language: new FormControl(null, [
         Validators.required
       ]),

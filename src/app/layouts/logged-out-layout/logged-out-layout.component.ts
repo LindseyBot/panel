@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ThemeService} from "../../services/theme.service";
-import {User} from "../../modules/auth/entities/user";
-import {AuthService} from "../../services/auth.service";
+import {ThemeService} from '../../services/theme.service';
+import {User} from '../../modules/auth/entities/user';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-logged-out-layout',

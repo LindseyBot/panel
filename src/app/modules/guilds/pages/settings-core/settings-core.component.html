@@ -8,20 +8,7 @@
             <!-- Line 1 -->
             <section>
               <div nzGutter="16" nz-row>
-                <div nzSpan="12" nz-col>
-                  <shared-settings-small-text id="prefix" [formGroup]="form" name="settings.core.prefix.name"
-                                              [nzRequired]="false" [nzErrorTip]="prefixError" placeholder="L!">
-                    <ng-template #prefixError let-control>
-                      <ng-container *ngIf="control.hasError('maxlength')">
-                        Prefix must be up to 8 characters only.
-                      </ng-container>
-                      <ng-container *ngIf="control.hasError('pattern')">
-                        Invalid prefix.
-                      </ng-container>
-                    </ng-template>
-                  </shared-settings-small-text>
-                </div>
-                <div nzSpan="12" nz-col>
+                <div nzSpan="24" nz-col>
                   <shared-settings-select id="language" [formGroup]="form" name="settings.core.language.name"
                                           [loading]="loading" [options]="this.languages"></shared-settings-select>
                 </div>

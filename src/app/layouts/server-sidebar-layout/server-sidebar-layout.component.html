@@ -15,7 +15,8 @@
       <li nz-menu-item nz-tooltip nzTooltipPlacement="right" [ngClass]="{'guild-logo-minimized': isCollapsed}"
           [nzTooltipTitle]="isCollapsed ? guild.name : ''">
         <i nz-icon>
-          <img src="{{guild.iconUrl}}" class="guild-logo" alt="guild logo">
+          <img src="https://cdn.discordapp.com/icons/{{guild.id}}/{{guild.iconHash}}.png" class="guild-logo"
+               alt="guild logo">
         </i>
         <span>
           {{guild.name}}
@@ -66,13 +67,6 @@
         <i nz-icon nzType="security-scan"></i>
         <span>
           <a routerLink="{{this.guildId}}/automod">AutoMod</a>
-        </span>
-      </li>
-      <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter
-          [nzTooltipTitle]="isCollapsed ? 'Music' : ''">
-        <i nz-icon nzType="customer-service"></i>
-        <span>
-          <a routerLink="{{this.guildId}}/music">Music</a>
         </span>
       </li>
       <li nz-menu-item nz-tooltip nzTooltipPlacement="right" nzMatchRouter

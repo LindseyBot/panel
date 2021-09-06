@@ -1,10 +1,10 @@
-import {Channel} from "./channel";
+import {Channel} from './channel';
 
 export class Guild {
 
   id: string;
   name: string;
-  iconUrl: string;
+  iconHash: string;
 
   channels: Channel[];
 
