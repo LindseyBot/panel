@@ -5,18 +5,18 @@ import {LeaderboardService} from '../../services/leaderboard.service';
 import {LeaderboardEntry} from '../../../../entities/leaderboard-entry';
 
 @Component({
-  selector: 'leaderboard-list',
+  selector: 'app-leaderboard-list',
   templateUrl: './leaderboard-list.component.html',
   styleUrls: ['./leaderboard-list.component.css']
 })
 export class LeaderboardListComponent implements OnInit {
 
-  loading: boolean = true;
+  loading = true;
   data: LeaderboardEntry[];
 
-  total: number = 100;
-  page: number = 0;
-  size: number = 15;
+  total = 100;
+  page = 0;
+  size = 10;
 
   @Input()
   type: string;
@@ -27,7 +27,7 @@ export class LeaderboardListComponent implements OnInit {
   ngOnInit(): void {
     this.onQueryParamsChange({
       pageIndex: 1,
-      pageSize: 15,
+      pageSize: 10,
       sort: [],
       filter: []
     });
@@ -36,7 +36,7 @@ export class LeaderboardListComponent implements OnInit {
   onQueryParamsChange(params: NzTableQueryParams): void {
     const {pageIndex} = params;
     this.page = pageIndex - 1;
-    this.service.fetch(this.type, this.page).subscribe(data => {
+    this.service.fetch(this.type, this.page, this.size).subscribe(data => {
       this.data = data.items;
       this.total = data.last ? data.items.length : 101;
       this.loading = false;

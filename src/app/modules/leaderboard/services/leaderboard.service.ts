@@ -12,8 +12,8 @@ export class LeaderboardService {
   constructor(private http: HttpClient) {
   }
 
-  fetch(type: string, page: number): Observable<LeaderBoardResponse> {
-    return this.http.get<LeaderBoardResponse>(environment.API_URL + '/leaderboards?type=' + type + '&page=' + page);
+  fetch(type: string, page: number, limit: number): Observable<LeaderBoardResponse> {
+    return this.http.get<LeaderBoardResponse>(environment.API_URL + '/leaderboards?type=' + type + '&page=' + page + '&limit=' + limit);
   }
 
 }
