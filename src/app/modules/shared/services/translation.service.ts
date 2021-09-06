@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 
 export class TranslationSet {
-  public language: string
-  public values: {}
+  public language: string;
+  public values: {};
 }
 
 @Injectable({
@@ -11,10 +11,10 @@ export class TranslationSet {
 })
 export class TranslationService {
 
-  public languages = ['en_US', 'pt_BR']
+  public languages = ['en_US', 'pt_BR'];
   public language = 'en_US';
 
-  private dictionary: { [key: string]: TranslationSet } = {}
+  private dictionary: { [key: string]: TranslationSet } = {};
 
   constructor(private http: HttpClient) {
     this.loadTranslation('en_US');

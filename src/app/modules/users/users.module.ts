@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { UsersRoutingModule } from './users-routing.module';
-import { ProfileComponent } from './pages/profile/profile.component';
+import {UsersRoutingModule} from './users-routing.module';
+import {ProfileComponent} from './pages/profile/profile.component';
 
 import {NzListModule} from 'ng-zorro-antd/list';
 import {NzGridModule} from 'ng-zorro-antd/grid';
@@ -40,4 +40,5 @@ import {NzImageModule} from 'ng-zorro-antd/image';
     NzImageModule
   ]
 })
-export class UsersModule { }
+export class UsersModule {
+}

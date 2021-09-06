@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NzTableQueryParams} from "ng-zorro-antd/table";
-import {HttpClient} from "@angular/common/http";
-import {LeaderboardService} from "../../services/leaderboard.service";
-import {LeaderboardEntry} from "../../../../entities/leaderboard-entry";
+import {NzTableQueryParams} from 'ng-zorro-antd/table';
+import {HttpClient} from '@angular/common/http';
+import {LeaderboardService} from '../../services/leaderboard.service';
+import {LeaderboardEntry} from '../../../../entities/leaderboard-entry';
 
 @Component({
   selector: 'leaderboard-list',

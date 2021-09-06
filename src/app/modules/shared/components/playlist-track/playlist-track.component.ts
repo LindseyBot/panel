@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Track} from "../../../../entities/track";
+import {Track} from '../../../../entities/track';
 
 @Component({
   selector: 'shared-playlist-track',

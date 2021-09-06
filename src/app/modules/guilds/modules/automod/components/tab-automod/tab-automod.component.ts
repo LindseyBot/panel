@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Guild} from "../../../../../../entities/guild";
-import {FormService} from "../../../../../../services/form.service";
-import {ServerSettingsService} from "../../../../services/server-settings.service";
-import {NzNotificationService} from "ng-zorro-antd/notification";
-import {skipWhile} from "rxjs/operators";
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Guild} from '../../../../../../entities/guild';
+import {FormService} from '../../../../../../services/form.service';
+import {ServerSettingsService} from '../../../../services/server-settings.service';
+import {NzNotificationService} from 'ng-zorro-antd/notification';
+import {skipWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'automod-main',

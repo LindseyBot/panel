@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent} from "./pages/dashboard/dashboard.component";
-import {LoggedInGuard} from "../../services/guards/logged-in.guard";
-import {SettingsCoreComponent} from "./pages/settings-core/settings-core.component";
-import {GuildSelectedGuard} from "../../services/guards/guild-selected.guard";
-import {SettingsAccessControlComponent} from "./pages/settings-access-control/settings-access-control.component";
+import {DashboardComponent} from './pages/dashboard/dashboard.component';
+import {LoggedInGuard} from '../../services/guards/logged-in.guard';
+import {SettingsCoreComponent} from './pages/settings-core/settings-core.component';
+import {GuildSelectedGuard} from '../../services/guards/guild-selected.guard';
+import {SettingsAccessControlComponent} from './pages/settings-access-control/settings-access-control.component';
 
 const routes: Routes = [
   {
@@ -40,11 +40,6 @@ const routes: Routes = [
   {
     path: ':guild/embeds',
     loadChildren: () => import('./modules/embeds/embeds.module').then(m => m.EmbedsModule),
-    canActivate: [LoggedInGuard, GuildSelectedGuard]
-  },
-  {
-    path: ':guild/music',
-    loadChildren: () => import('./modules/music/music.module').then(m => m.MusicModule),
     canActivate: [LoggedInGuard, GuildSelectedGuard]
   },
   {

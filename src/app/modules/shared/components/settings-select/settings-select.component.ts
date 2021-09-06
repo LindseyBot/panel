@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, TemplateRef} from '@angular/core';
-import {AbstractControl, FormGroup, NgModel} from "@angular/forms";
-import {NzSelectOptionInterface} from "ng-zorro-antd/select";
+import {AbstractControl, FormGroup, NgModel} from '@angular/forms';
+import {NzSelectOptionInterface} from 'ng-zorro-antd/select';
 
 @Component({
   selector: 'shared-settings-select',

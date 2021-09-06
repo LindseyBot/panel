@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AutomodSettingsComponent} from "./components/settings/automod-settings.component";
+import {AutomodSettingsComponent} from './components/settings/automod-settings.component';
 
 const routes: Routes = [
   {

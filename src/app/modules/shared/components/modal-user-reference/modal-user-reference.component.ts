@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NzModalRef} from "ng-zorro-antd/modal";
+import {NzModalRef} from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-modal-user-reference',

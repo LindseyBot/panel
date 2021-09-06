@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {NzSelectOptionInterface} from "ng-zorro-antd/select";
-import {ActivatedRoute} from "@angular/router";
-import {Guild} from "../../../../entities/guild";
-import {DiscordService} from "../../../../services/discord.service";
-import {ServerSettingsService} from "../../services/server-settings.service";
-import {NzNotificationService} from "ng-zorro-antd/notification";
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {NzSelectOptionInterface} from 'ng-zorro-antd/select';
+import {ActivatedRoute} from '@angular/router';
+import {Guild} from '../../../../entities/guild';
+import {DiscordService} from '../../../../services/discord.service';
+import {ServerSettingsService} from '../../services/server-settings.service';
+import {NzNotificationService} from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'settings-core',

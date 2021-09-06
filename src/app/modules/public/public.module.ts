@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { PublicRoutingModule } from './public-routing.module';
-import { IndexComponent } from './pages/index/index.component';
+import {PublicRoutingModule} from './public-routing.module';
+import {IndexComponent} from './pages/index/index.component';
 
 
 @NgModule({
@@ -12,4 +12,5 @@ import { IndexComponent } from './pages/index/index.component';
     PublicRoutingModule
   ]
 })
-export class PublicModule { }
+export class PublicModule {
+}

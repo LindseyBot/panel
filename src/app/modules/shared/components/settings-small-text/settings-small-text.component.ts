@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, TemplateRef} from '@angular/core';
-import {AbstractControl, FormGroup, NgModel} from "@angular/forms";
+import {AbstractControl, FormGroup, NgModel} from '@angular/forms';
 
 @Component({
   selector: 'shared-settings-small-text',

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LeaderboardSummaryComponent} from "./pages/leaderboard-summary/leaderboard-summary.component";
+import {LeaderboardSummaryComponent} from './pages/leaderboard-summary/leaderboard-summary.component';
 
 const routes: Routes = [
   {

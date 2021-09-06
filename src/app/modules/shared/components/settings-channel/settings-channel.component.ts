@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, TemplateRef} from '@angular/core';
-import {AbstractControl, FormGroup, NgModel} from "@angular/forms";
-import {Guild} from "../../../../entities/guild";
-import {NzSelectModeType} from "ng-zorro-antd/select";
+import {AbstractControl, FormGroup, NgModel} from '@angular/forms';
+import {Guild} from '../../../../entities/guild';
+import {NzSelectModeType} from 'ng-zorro-antd/select';
 
 @Component({
   selector: 'shared-settings-channel',
@@ -31,7 +31,7 @@ export class SettingsChannelComponent implements OnInit {
   }>;
 
   @Input()
-  mode: NzSelectModeType = "default";
+  mode: NzSelectModeType = 'default';
 
   @Input()
   guild: Guild;

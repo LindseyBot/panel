@@ -1,38 +1,38 @@
 <nz-row>
-    <nz-col nzMd="4" nzSm="0"></nz-col>
-    <nz-col nzMd="16" nzXs="24">
-        <nz-skeleton [nzActive]="true" [hidden]="loaded"></nz-skeleton>
-        <form nz-form nzLayout="vertical" [hidden]="!loaded">
-            <nz-tabset>
-                <nz-tab nzTitle="Settings">
-                    <shared-settings-select id="language" name="Language" [formGroup]="form"
-                                            [options]="this.languages"></shared-settings-select>
-                    <shared-settings-select id="country" name="Country" [formGroup]="form"
-                                            [options]="this.countries"></shared-settings-select>
-                </nz-tab>
-                <nz-tab nzTitle="Your Badges">
-                    <div class="gutter-example">
-                        <div nz-row [nzGutter]="[48, 48]">
-                            <div nz-col class="gutter-row" [nzSpan]="2" *ngFor="let badge of badges">
-                                <img nz-image [nzDisablePreview]="true" width="50px" [nzSrc]="badge.url" alt=""/>
-                            </div>
-                        </div>
-                    </div>
-                </nz-tab>
-            </nz-tabset>
-        </form>
-    </nz-col>
-    <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
+  <nz-col nzMd="16" nzXs="24">
+    <nz-skeleton [nzActive]="true" [hidden]="loaded"></nz-skeleton>
+    <form nz-form nzLayout="vertical" [hidden]="!loaded">
+      <nz-tabset>
+        <nz-tab nzTitle="Settings">
+          <shared-settings-select id="language" name="Language" [formGroup]="form"
+                                  [options]="this.languages"></shared-settings-select>
+          <shared-settings-select id="country" name="Country" [formGroup]="form"
+                                  [options]="this.countries"></shared-settings-select>
+        </nz-tab>
+        <nz-tab nzTitle="Your Badges">
+          <div class="gutter-example">
+            <div nz-row [nzGutter]="[48, 48]">
+              <div nz-col class="gutter-row" [nzSpan]="2" *ngFor="let badge of badges">
+                <img nz-image [nzDisablePreview]="true" width="50px" [nzSrc]="badge.url" alt=""/>
+              </div>
+            </div>
+          </div>
+        </nz-tab>
+      </nz-tabset>
+    </form>
+  </nz-col>
+  <nz-col nzMd="4" nzSm="0"></nz-col>
 </nz-row>
 <nz-row>
-    <ng-template #unsaved>
-        <nz-space>
-            <nz-space-item>
-                You have unsaved changes
-            </nz-space-item>
-            <nz-space-item>
-                <button nz-button nzSize="small" nzType="primary" (click)="save()">Save Changes</button>
-            </nz-space-item>
-        </nz-space>
-    </ng-template>
+  <ng-template #unsaved>
+    <nz-space>
+      <nz-space-item>
+        You have unsaved changes
+      </nz-space-item>
+      <nz-space-item>
+        <button nz-button nzSize="small" nzType="primary" (click)="save()">Save Changes</button>
+      </nz-space-item>
+    </nz-space>
+  </ng-template>
 </nz-row>

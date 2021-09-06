@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DiscordService} from "../../../../services/discord.service";
-import {Guild} from "../../../../entities/guild";
-import {ActivatedRoute} from "@angular/router";
+import {DiscordService} from '../../../../services/discord.service';
+import {Guild} from '../../../../entities/guild';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('guild');
-    this.discord.getGuild(id).subscribe(guild => this.guild = guild)
+    this.discord.getGuild(id).subscribe(guild => this.guild = guild);
   }
 
 }

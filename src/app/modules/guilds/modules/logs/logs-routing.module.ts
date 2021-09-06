@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LogsSettingsComponent} from "./components/settings/logs-settings.component";
+import {LogsSettingsComponent} from './components/settings/logs-settings.component';
 
 const routes: Routes = [
   {

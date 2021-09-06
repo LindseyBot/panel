@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AccessControlService} from "../../services/access-control.service";
-import {AccessCredentials} from "../../../../entities/access-credentials";
-import {AuthService} from "../../../../services/auth.service";
-import {ModalService} from "../../../../services/modal.service";
-import {NzNotificationService} from "ng-zorro-antd/notification";
-import {ActivatedRoute} from "@angular/router";
+import {AccessControlService} from '../../services/access-control.service';
+import {AccessCredentials} from '../../../../entities/access-credentials';
+import {AuthService} from '../../../../services/auth.service';
+import {ModalService} from '../../../../services/modal.service';
+import {NzNotificationService} from 'ng-zorro-antd/notification';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-settings-access-control',
@@ -68,7 +68,7 @@ export class SettingsAccessControlComponent implements OnInit {
       this.nzNotifications.error('Failed to remove user', _.error.message, {
         nzDuration: 5000
       });
-    })
+    });
   }
 
 }

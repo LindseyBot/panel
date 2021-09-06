@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AuditMessage} from "../../../../../../entities/audit-message";
-import {NzTableQueryParams} from "ng-zorro-antd/table";
-import {GuildLogsService} from "../../guild-logs.service";
-import {Guild} from "../../../../../../entities/guild";
-import {ActivatedRoute} from "@angular/router";
-import {DiscordService} from "../../../../../../services/discord.service";
+import {AuditMessage} from '../../../../../../entities/audit-message';
+import {NzTableQueryParams} from 'ng-zorro-antd/table';
+import {GuildLogsService} from '../../guild-logs.service';
+import {Guild} from '../../../../../../entities/guild';
+import {ActivatedRoute} from '@angular/router';
+import {DiscordService} from '../../../../../../services/discord.service';
 
 @Component({
   selector: 'app-settings',
@@ -52,7 +52,7 @@ export class LogsSettingsComponent implements OnInit {
 
   toLocalTime(time: string) {
     const date = new Date(time);
-    const options = {
+    const options: Intl.DateTimeFormatOptions = {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',

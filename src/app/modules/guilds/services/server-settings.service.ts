@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {AuthService} from "../../../services/auth.service";
-import {Observable} from "rxjs";
-import {environment} from "../../../../environments/environment";
-import {ServerProfile} from "../../../entities/server-profile";
-import {MusicSettings} from "../../../entities/music-settings";
-import {StarboardSettings} from "../../../entities/starboard-settings";
-import {EmbedSettings} from "../../../entities/embed-settings";
-import {Antiad} from "../../../entities/antiad";
-import {Automod} from "../../../entities/automod";
+import {HttpClient} from '@angular/common/http';
+import {AuthService} from '../../../services/auth.service';
+import {Observable} from 'rxjs';
+import {environment} from '../../../../environments/environment';
+import {ServerProfile} from '../../../entities/server-profile';
+import {MusicSettings} from '../../../entities/music-settings';
+import {StarboardSettings} from '../../../entities/starboard-settings';
+import {EmbedSettings} from '../../../entities/embed-settings';
+import {Antiad} from '../../../entities/antiad';
+import {Automod} from '../../../entities/automod';
 
 @Injectable({
   providedIn: 'root'

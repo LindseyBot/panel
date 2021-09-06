@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {EmbedsSettingsComponent} from "./components/settings/embeds-settings.component";
+import {EmbedsSettingsComponent} from './components/settings/embeds-settings.component';
 
 const routes: Routes = [
   {

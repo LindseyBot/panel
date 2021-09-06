@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ServerSidebarLayoutComponent} from "./layouts/server-sidebar-layout/server-sidebar-layout.component";
-import {LoggedInGuard} from "./services/guards/logged-in.guard";
-import {GuildListComponent} from "./pages/guild-list/guild-list.component";
-import {LoggedOutLayoutComponent} from "./layouts/logged-out-layout/logged-out-layout.component";
+import {ServerSidebarLayoutComponent} from './layouts/server-sidebar-layout/server-sidebar-layout.component';
+import {LoggedInGuard} from './services/guards/logged-in.guard';
+import {GuildListComponent} from './pages/guild-list/guild-list.component';
+import {LoggedOutLayoutComponent} from './layouts/logged-out-layout/logged-out-layout.component';
 
 const routes: Routes = [
   {
@@ -36,11 +36,6 @@ const routes: Routes = [
     path: 'leaderboards',
     component: LoggedOutLayoutComponent,
     loadChildren: () => import('./modules/leaderboard/leaderboard.module').then(m => m.LeaderboardModule)
-  },
-  {
-    path: 'playlists',
-    component: LoggedOutLayoutComponent,
-    loadChildren: () => import('./modules/playlists/playlists.module').then(m => m.PlaylistsModule)
   },
   {
     path: 'selector',
