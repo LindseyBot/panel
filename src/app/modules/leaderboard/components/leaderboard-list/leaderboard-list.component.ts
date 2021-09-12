@@ -38,7 +38,7 @@ export class LeaderboardListComponent implements OnInit {
     this.page = pageIndex - 1;
     this.service.fetch(this.type, this.page, this.size).subscribe(data => {
       this.data = data.items;
-      this.total = data.last ? data.items.length : 101;
+      this.total = data.total;
       this.loading = false;
     }, (_) => {
       this.loading = false;
